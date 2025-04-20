@@ -13,7 +13,8 @@
 
     <!-- submodules-->
     <modules>
-        <module>frame</module>
+        <module>common</module>
+        <module>system</module>
     </modules>
 
     <!-- 版本属性 -->
@@ -24,11 +25,12 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <spring.boot.version>2.5.5</spring.boot.version>
+        <spring.cloud.version>2020.0.4</spring.cloud.version>
+        <alibaba.cloud.version>2021.1</alibaba.cloud.version>
 
         <lombok.version>1.18.28</lombok.version>
         <commons.lang3.version>3.9</commons.lang3.version>
         <commons.codec.version>1.15</commons.codec.version>
-        <xxl.job.version>2.3.0</xxl.job.version>
 
         <aliyun.oss.version>3.8.0</aliyun.oss.version>
         <kaptcha.version>1.1.0</kaptcha.version>
@@ -39,7 +41,9 @@
         <junit.version>4.12</junit.version>
         <druid.version>1.2.8</druid.version>
         <fastjson.version>1.2.79</fastjson.version>
-        <hutool.version>5.8.27</hutool.version>
+        <hutool.version>5.8.0</hutool.version>
+        <sa-token.version>1.42.0</sa-token.version>
+        <httpclient.version>4.5.13</httpclient.version>
 
         <mybatis-plus.version>3.5.7</mybatis-plus.version>
         <!-- mybatis的分页插件-->
@@ -52,7 +56,6 @@
         <docker.image.prefix>docker-prefix</docker.image.prefix>
     </properties>
 
-
     <dependencyManagement>
         <dependencies>
             <!-- Spring Boot 依赖管理 -->
@@ -60,6 +63,24 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
                 <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Spring Cloud 依赖管理 -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring.cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Spring Cloud Alibaba 依赖管理 -->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${alibaba.cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -146,18 +167,24 @@
                 <version>${kaptcha.version}</version>
             </dependency>
 
+            <!-- Sa-Token 权限认证，在线文档：https://sa-token.cc -->
+            <dependency>
+                <groupId>cn.dev33</groupId>
+                <artifactId>sa-token-spring-boot-starter</artifactId>
+                <version>${sa-token.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${httpclient.version}</version>
+            </dependency>
+
             <!--分布式锁-->
             <dependency>
                 <groupId>org.redisson</groupId>
                 <artifactId>redisson</artifactId>
                 <version>${redission.version}</version>
-            </dependency>
-
-            <!-- shardingsphere -->
-            <dependency>
-                <groupId>org.apache.shardingsphere</groupId>
-                <artifactId>shardingsphere-jdbc-core-spring-boot-starter</artifactId>
-                <version>${sharding.jdbc.version}</version>
             </dependency>
 
             <dependency>
@@ -167,32 +194,4 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-
-    <!--module不用添加打包版本信息-->
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.1</version>
-                <configuration>
-                    <skip>true</skip>
-                    <source>${maven.compiler.source}</source>
-                    <target>${maven.compiler.target}</target>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring.boot.version}</version>
-                <configuration>
-                    <fork>true</fork>
-                    <addResources>true</addResources>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
 </project>
