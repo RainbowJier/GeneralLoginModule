@@ -284,28 +284,28 @@
           <mxGeometry x="1530" y="1190" width="200" height="40" as="geometry" />
         </mxCell>
         <mxCell id="rxfItcIWFSnz3CFshnel-2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;dashed=1;" vertex="1" parent="1">
-          <mxGeometry x="200" y="520" width="210" height="210" as="geometry" />
+          <mxGeometry x="170" y="520" width="240" height="210" as="geometry" />
         </mxCell>
         <mxCell id="rxfItcIWFSnz3CFshnel-3" value="&lt;b&gt;Key = system : register : md5(IP+Email)&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="190" y="490" width="250" height="30" as="geometry" />
+          <mxGeometry x="170" y="490" width="250" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="rxfItcIWFSnz3CFshnel-4" value="score&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; :&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;value" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="220" y="530" width="170" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="rxfItcIWFSnz3CFshnel-5" value="score&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; :&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;value" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="220" y="580" width="170" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="rxfItcIWFSnz3CFshnel-6" value="score&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; :&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;value" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="220" y="630" width="170" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="rxfItcIWFSnz3CFshnel-7" value="score&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; :&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;value" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="220" y="680" width="170" height="30" as="geometry" />
+        <mxCell id="rxfItcIWFSnz3CFshnel-4" value="score（时间戳） :&amp;nbsp; &amp;nbsp;value（时间戳）" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="190" y="530" width="200" height="30" as="geometry" />
         </mxCell>
         <mxCell id="rxfItcIWFSnz3CFshnel-8" value="Score从小到大&lt;br&gt;排序" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="448.75" y="530" as="sourcePoint" />
             <mxPoint x="448.75" y="710" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="rxfItcIWFSnz3CFshnel-9" value="score（时间戳） :&amp;nbsp; &amp;nbsp;value（时间戳）" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="190" y="580" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="rxfItcIWFSnz3CFshnel-10" value="score（时间戳） :&amp;nbsp; &amp;nbsp;value（时间戳）" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="190" y="630" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="rxfItcIWFSnz3CFshnel-11" value="score（时间戳） :&amp;nbsp; &amp;nbsp;value（时间戳）" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="190" y="680" width="200" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
