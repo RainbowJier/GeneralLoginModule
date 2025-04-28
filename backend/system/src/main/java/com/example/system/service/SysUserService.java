@@ -1,10 +1,8 @@
 package com.example.system.service;
 
-import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.common.util.JsonData;
-import com.example.frame.controller.request.LoginRequest;
-import com.example.frame.controller.request.RegisterRequest;
-import com.example.frame.model.entity.SysUser;
+import com.example.system.controller.request.LoginRequest;
+import com.example.system.controller.request.RegisterRequest;
 
 
 /**

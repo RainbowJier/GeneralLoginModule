@@ -88,7 +88,7 @@ public class NotifyController {
     /**
      * Send code.
      */
-    @SysLogAnno(description = "Send phone / mial code", operateType = OperationType.OTHER)
+    @SysLogAnno(description = "Send phone / mail code", operateType = OperationType.OTHER)
     @PostMapping("sendEmailCode")
     public JsonData sendEmailCode(SendCodeRequest sendCodeRequest, HttpServletRequest request) throws MessagingException {
         // Obtain the captcha code.

@@ -1,4 +1,4 @@
-package com.example.frame.controller.request;
+package com.example.system.controller.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,18 +16,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class LoginRequest {
 
-    /**
-     * 手机号
-     */
-    private String phone;
+    // private String phone;
 
-    /**
-     * 账号
-     */
-    private String account;
+    private String email;
 
-    /**
-     * 密码
-     */
+    private String username;
+
     private String pwd;
 }

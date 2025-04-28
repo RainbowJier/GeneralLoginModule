@@ -9,13 +9,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class SendCodeRequest {
 
-    /**
-     * 验证码
-     */
     private String code;
 
     /**
-     * 邮箱/手机改号
+     * mail / phone
      */
     private String to;
 

@@ -1,6 +1,5 @@
 package com.example.system;
 
-import com.example.system.component.EmailComponent;
 import com.example.system.component.SmsComponent;
 import com.example.system.config.SmsConfig;
 import org.junit.jupiter.api.Test;
@@ -12,7 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import javax.annotation.Resource;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = AccountApplication.class)
+@SpringBootTest(classes = SystemApplication.class)
 class AccountApplicationTests {
 
     @Autowired

@@ -1,10 +1,8 @@
-package com.example.frame.controller.request;
+package com.example.system.controller.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.Date;
 
 /**
  * @Author: RainbowJier

@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 //@EnableDiscoveryClient      // Enable Service register and discovery.
 @SpringBootApplication
 @EnableAsync     // Enable asynchronous method.
-public class AccountApplication {
+public class SystemApplication {
 
     public static final String BANNER = "\n" +
             "   _____   _    _    _____    _____   ______    _____    _____ \n" +
@@ -27,7 +27,7 @@ public class AccountApplication {
             "                                                               \n";
 
     public static void main(String[] args) {
-        SpringApplication.run(AccountApplication.class, args);
+        SpringApplication.run(SystemApplication.class, args);
         log.info(BANNER);
     }
 }

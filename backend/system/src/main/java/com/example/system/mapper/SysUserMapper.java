@@ -1,7 +1,7 @@
 package com.example.system.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.example.frame.model.entity.SysUser;
+import com.example.system.model.entity.SysUser;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -13,6 +13,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface SysUserMapper extends BaseMapper<SysUser> {
+
 
 }
 
