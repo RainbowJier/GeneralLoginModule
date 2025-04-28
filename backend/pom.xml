@@ -40,7 +40,7 @@
         <skipTests>true</skipTests>
         <junit.version>4.12</junit.version>
         <druid.version>1.2.8</druid.version>
-        <fastjson.version>1.2.79</fastjson.version>
+        <fastjson.version>1.2.78</fastjson.version>
         <hutool.version>5.8.0</hutool.version>
         <sa-token.version>1.42.0</sa-token.version>
         <httpclient.version>4.5.13</httpclient.version>

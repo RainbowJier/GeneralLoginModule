@@ -45,6 +45,10 @@ public class JsonData {
         return new JsonData(BizCode.FAILED.getCode(), null, BizCode.FAILED.getMessage());
     }
 
+    public static JsonData buildError(String msg) {
+        return new JsonData(BizCode.FAILED.getCode(), null, msg);
+    }
+
     public static JsonData buildError(BizCode bizCode) {
         return new JsonData(bizCode.getCode(), null, bizCode.getMessage());
     }

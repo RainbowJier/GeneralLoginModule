@@ -68,26 +68,41 @@ public class SysLogAop {
         log.info("请求方式   : {}", request.getMethod());
         log.info("接口描述   : {}", systemlog.description());
         log.info("请求类名   : {}.{}", joinPoint.getSignature().getDeclaringTypeName(), joinPoint.getSignature().getName());
-        log.info("传入参数   : {}", JSON.toJSONString(joinPoint.getArgs()));
+
+        try {
+            String requestArgs = JSON.toJSONString(joinPoint.getArgs());
+            log.info("传入参数   : {}", requestArgs);
+        }catch (Exception e){
+            log.info("传入参数   : null");
+        }
+
     }
 
 
     private void handleAfter(Object ret, ProceedingJoinPoint joinPoint, SysLogAnno systemlog, HttpServletRequest request) {
-        log.info("返回参数   : {}", JSON.toJSONString(ret));
-        insertLog(systemlog, joinPoint, request, ret);
+        try {
+            String requestArgs = JSON.toJSONString(ret);
+            log.info("返回参数   : {}", requestArgs);
+
+            // 新增操作日志
+            insertLog(systemlog, joinPoint, request, ret);
+        }catch (Exception e){
+            log.info("返回参数   : null");
+        }
+
     }
 
     private void insertLog(SysLogAnno sysLogAnno, ProceedingJoinPoint joinPoint, HttpServletRequest request, Object result) {
         String ip = request.getRemoteHost();
         String desc = sysLogAnno.description();    // 操作描述
         String operateType = sysLogAnno.operateType().toString();
-        String params = JSON.toJSONString(joinPoint.getArgs());
+        // 请求参数
+        String requestArgs = "";
+        try {
+            requestArgs = JSON.toJSONString(joinPoint.getArgs());
+        }catch (Exception e){
 
-        log.info("【操作日志】操作描述     : {}", desc);
-        log.info("【操作日志】操作类型     : {}", operateType);
-        log.info("【操作日志】IP地址   : {}", ip);
-        log.info("【操作日志】请求参数     : {}", params);
-        log.info("【操作日志】时间     : {}", LocalDateTime.now());
+        }
 
         // TODO: 实际插入数据库、消息队列或其他持久化操作
 

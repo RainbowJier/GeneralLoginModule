@@ -13,7 +13,7 @@ CREATE TABLE sys_user
     password    VARCHAR(255) NOT NULL COMMENT '加密后的密码',
     account     VARCHAR(50)  NOT NULL COMMENT '账号',
     salt        VARCHAR(50) COMMENT '用于加盐加密',
-    phone       VARCHAR(20) COMMENT '手机号',
+    phone       VARCHAR(20) UNIQUE COMMENT '手机号',
     status      TINYINT  DEFAULT 1 COMMENT '状态：0=禁用，1=启用',
     create_time DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     update_time DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间'

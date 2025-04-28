@@ -24,6 +24,7 @@ public enum BizCode {
     UNAUTHORIZED(401, "暂未登录或token已经过期"),
     FORBIDDEN(403, "没有相关权限"),
 
+
     /**
      * 账号登录
      */
@@ -33,6 +34,8 @@ public enum BizCode {
     ACCOUNT_UNLOGIN(250004, "账号未登录"),
     PHONE_REPEAT(250005, "当前手机号已经注册"),
     EMAIL_REPEAT(250006, "当前邮箱已经注册"),
+    FAIL_SEND_EMAIL(250007, "邮箱发送失败"),
+
 
     /**
      * 分组
