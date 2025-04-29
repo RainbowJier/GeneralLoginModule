@@ -8,6 +8,7 @@ import com.example.common.enums.SendCodeEnum;
 import com.example.common.exception.BizException;
 import com.example.common.util.CommonUtil;
 import com.example.common.util.JsonData;
+import com.example.system.aop.annotation.LimitFlowAnno;
 import com.example.system.aop.annotation.SysLogAnno;
 import com.example.system.controller.request.SendCodeRequest;
 import com.example.system.service.NotifyService;
@@ -16,10 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.imageio.ImageIO;
@@ -43,7 +41,7 @@ public class NotifyController {
     private Producer captchaProducer;
 
     @Resource
-    private RedisTemplate<String,Object> redisTemplate;
+    private RedisTemplate<String, Object> redisTemplate;
 
     @Resource
     private NotifyService notifyService;
@@ -89,6 +87,7 @@ public class NotifyController {
      * Send code.
      */
     @SysLogAnno(description = "Send phone / mail code", operateType = OperationType.OTHER)
+    @LimitFlowAnno(behavior = "emailCode", windowSize = 1, requestLimit = 3)
     @PostMapping("sendEmailCode")
     public JsonData sendEmailCode(SendCodeRequest sendCodeRequest, HttpServletRequest request) throws MessagingException {
         // Obtain the captcha code.

@@ -16,6 +16,9 @@ public class RedisKey {
      */
     public  static final String CHECK_CODE_KEY = "code:%s:%s";
 
+
+    public static final String LIMIT_FLOW_KEY = "limit:flow:%s:%s";
+
     /**
      * 登录-图形验证码
      */

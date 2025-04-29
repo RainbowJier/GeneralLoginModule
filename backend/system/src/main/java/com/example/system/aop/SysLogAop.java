@@ -1,6 +1,7 @@
 package com.example.system.aop;
 
 import com.alibaba.fastjson.JSON;
+import com.example.common.util.JsonUtil;
 import com.example.system.aop.annotation.SysLogAnno;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -8,29 +9,25 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
+import java.util.HashMap;
 
 @Component
 @Aspect
 @Slf4j
+@Order(1)
 public class SysLogAop {
-    /**
-     * 设置切入点d的注解
-     */
     @Pointcut("@annotation(com.example.system.aop.annotation.SysLogAnno)")
     public void pt() {
 
     }
 
-    /**
-     * 环绕通知
-     *
-     */
     @Around("pt()")
     public Object printLog(ProceedingJoinPoint joinPoint) throws Throwable {
         Object ret;
@@ -70,8 +67,9 @@ public class SysLogAop {
         log.info("请求类名   : {}.{}", joinPoint.getSignature().getDeclaringTypeName(), joinPoint.getSignature().getName());
 
         try {
-            String requestArgs = JSON.toJSONString(joinPoint.getArgs());
-            log.info("传入参数   : {}", requestArgs);
+            String argJsonStr = JSON.toJSONString(joinPoint.getArgs()[0]);
+            HashMap<String,String> requestMap = JsonUtil.jsonStrToObj(argJsonStr,HashMap.class);
+            log.info("传入参数   : {}", requestMap);
         }catch (Exception e){
             log.info("传入参数   : null");
         }
@@ -96,13 +94,7 @@ public class SysLogAop {
         String ip = request.getRemoteHost();
         String desc = sysLogAnno.description();    // 操作描述
         String operateType = sysLogAnno.operateType().toString();
-        // 请求参数
-        String requestArgs = "";
-        try {
-            requestArgs = JSON.toJSONString(joinPoint.getArgs());
-        }catch (Exception e){
 
-        }
 
         // TODO: 实际插入数据库、消息队列或其他持久化操作
 

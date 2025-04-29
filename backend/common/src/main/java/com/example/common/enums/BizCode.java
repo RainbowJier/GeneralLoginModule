@@ -55,28 +55,6 @@ public enum BizCode {
     CODE_CAPTCHA_EXCEPTION(240005, "图形验证码发送异常"),
 
 
-    /**
-     * Short link.
-     */
-    SHORT_LINK_NOT_EXIST(260404, "短链不存在"),
-
-    /**
-     * Order
-     */
-    ORDER_CONFIRM_PRICE_FAIL(280002, "创建订单-验价失败"),
-    ORDER_CONFIRM_REPEAT(280008, "订单恶意-重复提交"),
-    ORDER_CONFIRM_TOKEN_EQUAL_FAIL(280009, "订单令牌缺少"),
-    ORDER_CONFIRM_NOT_EXIST(280010, "订单不存在"),
-
-    /**
-     * Payment.
-     */
-    PAY_ORDER_FAIL(300001, "创建⽀付订单失败"),
-    PAY_ORDER_CALLBACK_SIGN_FAIL(300002, "⽀付订单回调验证签失败"),
-    PAY_ORDER_CALLBACK_NOT_SUCCESS(300003, "⽀付宝回调更新订单失败"),
-    PAY_ORDER_NOT_EXIST(300005, "订单不存在"),
-    PAY_ORDER_STATE_ERROR(300006, "订单状态不正常"),
-    PAY_ORDER_PAY_TIMEOUT(300007, "订单⽀付超时"),
 
     /**
      * Stream operation.
@@ -85,18 +63,7 @@ public enum BizCode {
     CONTROL_DEGRADE(500201, "降级控制"),
     CONTROL_AUTH(500301, "认证控制"),
 
-    /**
-     * Traffic package operation.
-     */
-    TRAFFIC_FREE_NOT_EXIST(600101, "免费流量包不存在，联系客服"),
-    TRAFFIC_REDUCE_FAIL(600102, "流量包不⾜，扣减失败"),
-    TRAFFIC_EXCEPTION(600103, "流量包数据异常,⽤户⽆流包"),
 
-    /**
-     * Common operation code.
-     */
-    OPS_REPEAT(110001, "重复操作"),
-    OPS_NETWORK_ADDRESS_ERROR(110002, "⽹络地址错误"),
 
     /**
      * Files
