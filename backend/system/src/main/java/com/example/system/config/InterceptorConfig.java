@@ -13,10 +13,10 @@ public class InterceptorConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new LoginInterceptor())
-                .addPathPatterns("/api/account/*/**","/api/traffic/*/**")
+                .addPathPatterns("/system/*/**")
                 .excludePathPatterns(
-                        "/api/account/register","/api/account/login",
-                        "/api/account/captcha","/api/account/sendCode"
+                        "/system/register","/system/login",
+                        "/system/captcha","/system/sendCode"
                 );
     }
 }
