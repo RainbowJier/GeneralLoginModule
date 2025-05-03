@@ -20,7 +20,7 @@ import javax.annotation.Resource;
  */
 @Slf4j
 @RestController
-@RequestMapping("/api/account")
+@RequestMapping("/system")
 public class LoginController {
     @Resource
     private SysUserService sysUserService;

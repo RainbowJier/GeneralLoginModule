@@ -22,5 +22,5 @@ public class LoginRequest {
 
     private String username;
 
-    private String pwd;
+    private String password;
 }

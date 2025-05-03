@@ -81,7 +81,7 @@ public class SysUserServiceImpl implements SysUserService {
 
         // Match password.
         String secret = sysUser.getSalt();
-        String loginPwd = loginRequest.getPwd();
+        String loginPwd = loginRequest.getPassword();
         String encryptedPwd = Md5Crypt.md5Crypt(loginPwd.getBytes(), secret);
         if (!encryptedPwd.equals(sysUser.getPassword())) {
             return JsonData.buildError(BizCode.ACCOUNT_PWD_ERROR);
@@ -91,8 +91,6 @@ public class SysUserServiceImpl implements SysUserService {
         Long userId = sysUser.getId();
         StpUtil.login(userId);
 
-        HashMap<String, Object> resultMap = new HashMap<>();
-
         // Generate token.
         SaTokenInfo token = StpUtil.getTokenInfo();
 
@@ -100,8 +98,9 @@ public class SysUserServiceImpl implements SysUserService {
         LoginUser loginUser = new LoginUser();
         BeanUtils.copyProperties(sysUser, loginUser);
 
+        HashMap<String, Object> resultMap = new HashMap<>();
         resultMap.put("token", token);
-        resultMap.put("data",loginUser);
+        resultMap.put("userInfo",loginUser);
         return JsonData.buildSuccess(resultMap);
     }
 

@@ -16,7 +16,6 @@ import com.google.code.kaptcha.Producer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -34,7 +33,7 @@ import java.util.concurrent.TimeUnit;
  */
 @Slf4j
 @RestController
-@RequestMapping("/api/notify")
+@RequestMapping("/system")
 public class NotifyController {
 
     @Resource
@@ -65,6 +64,7 @@ public class NotifyController {
 
         BufferedImage bufferedImage = captchaProducer.createImage(value);
         try {
+            response.setContentType("image/jpeg"); // 或 image/png 视你用的格式而定
             ServletOutputStream outputStream = response.getOutputStream();
             ImageIO.write(bufferedImage, "jpg", outputStream);
 
@@ -88,8 +88,8 @@ public class NotifyController {
      */
     @SysLogAnno(description = "Send phone / mail code", operateType = OperationType.OTHER)
     @LimitFlowAnno(behavior = "emailCode", windowSize = 1, requestLimit = 3)
-    @PostMapping("sendEmailCode")
-    public JsonData sendEmailCode(SendCodeRequest sendCodeRequest, HttpServletRequest request) throws MessagingException {
+    @PostMapping("sendCode")
+    public JsonData sendCode(SendCodeRequest sendCodeRequest, HttpServletRequest request) throws MessagingException {
         // Obtain the captcha code.
         String key = getCaptchaKey(request);
         String codeCache = (String) redisTemplate.opsForValue().get(key);
