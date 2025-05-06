@@ -5,6 +5,7 @@ import com.example.common.util.JsonData;
 import com.example.system.aop.annotation.SysLogAnno;
 import com.example.system.controller.request.LoginRequest;
 import com.example.system.controller.request.RegisterRequest;
+import com.example.system.controller.request.ResetUserRequest;
 import com.example.system.service.SysUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -44,6 +45,18 @@ public class LoginController {
     public JsonData login(LoginRequest loginRequest) {
         return sysUserService.login(loginRequest);
     }
+
+
+    /**
+     * Reset password
+     */
+    @SysLogAnno(description = "Reset UserInfo", operateType = OperationType.UPDATE)
+    @PostMapping("reset")
+    public JsonData reset(ResetUserRequest resetUserRequest) {
+        return sysUserService.reset(resetUserRequest);
+    }
+
+
 
 
 }

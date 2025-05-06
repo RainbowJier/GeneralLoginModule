@@ -11,6 +11,7 @@ import com.example.common.util.CommonUtil;
 import com.example.common.util.JsonData;
 import com.example.system.controller.request.LoginRequest;
 import com.example.system.controller.request.RegisterRequest;
+import com.example.system.controller.request.ResetUserRequest;
 import com.example.system.manager.SysUserManager;
 import com.example.system.model.entity.SysUser;
 import com.example.system.service.NotifyService;
@@ -111,6 +112,11 @@ public class SysUserServiceImpl implements SysUserService {
 
     @Override
     public JsonData selectAll(int pageNum, int pageSize) {
+        return null;
+    }
+
+    @Override
+    public JsonData reset(ResetUserRequest resetUserRequest) {
         return null;
     }
 }
