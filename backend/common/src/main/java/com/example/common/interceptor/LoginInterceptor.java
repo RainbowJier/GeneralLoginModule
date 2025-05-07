@@ -45,7 +45,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         String loginId = (String) StpUtil.getLoginIdByToken(token);
 
         if(loginId == null){
-            CommonUtil.sendJsonMessage(response, JsonData.buildError(BizCode.ACCOUNT_UNLOGIN));
+            CommonUtil.sendJsonMessage(response, JsonData.buildError(BizCode.UNAUTHORIZED));
             return false;
         }
 
