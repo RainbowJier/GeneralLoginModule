@@ -77,7 +77,6 @@ function login() {
    } catch (error) {
       throw new Error("系统异常")
    }
-
 }
 
 </script>

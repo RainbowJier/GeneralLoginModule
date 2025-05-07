@@ -2,6 +2,7 @@ package com.example.system.controller;
 
 import cn.dev33.satoken.stp.StpUtil;
 import com.example.common.enums.OperationType;
+import com.example.common.interceptor.LoginInterceptor;
 import com.example.common.util.JsonData;
 import com.example.system.aop.annotation.SysLogAnno;
 import com.example.system.controller.request.LoginRequest;
@@ -27,7 +28,6 @@ public class LoginController {
     @Resource
     private SysUserService sysUserService;
 
-
     /**
      * Register
      */
@@ -36,7 +36,6 @@ public class LoginController {
     public JsonData register(RegisterRequest registerRequest) {
         return sysUserService.register(registerRequest);
     }
-
 
     /**
      * Login
@@ -47,6 +46,17 @@ public class LoginController {
         return sysUserService.login(loginRequest);
     }
 
+    /**
+     * logout
+     */
+    @SysLogAnno(description = "Logout", operateType = OperationType.OTHER)
+    @PostMapping("logout")
+    public JsonData logout() {
+        Long userId = LoginInterceptor.threadLocal.get();
+        StpUtil.logout(userId);
+
+        return JsonData.buildSuccess("退出登录");
+    }
 
     /**
      * Reset password
@@ -57,17 +67,13 @@ public class LoginController {
         return sysUserService.reset(resetPwdRequest);
     }
 
-    @PostMapping("checkToken")
-    public JsonData checkToken(String token){
-        return JsonData.buildSuccess();
-    }
-
+    /**
+     * Get all users.
+     */
     @GetMapping("selectAllUsers")
-    public JsonData selectAllUsers(){
+    public JsonData selectAllUsers() {
         return sysUserService.selectAllUsers();
     }
-
-
 
 
 }
