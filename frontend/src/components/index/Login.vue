@@ -62,15 +62,14 @@ function login() {
 
    try {
       Api.post('/system/login', userInfo.value).then((res) => {
-         let resData = res.data
+         let resData = res.data;
          if (resData.code === 200) {
-            console.log(resData.data.tokenInfo);
-            localStorage.setItem('Authorization', resData.data.tokenInfo.tokenValue)
-            localStorage.setItem('userInfo', JSON.stringify(resData.data.userInfo))
+            localStorage.setItem('Authorization', resData.data.tokenInfo.tokenValue);
+            localStorage.setItem('userInfo', JSON.stringify(resData.data.userInfo));
 
-            ElMessage.success('登录成功')
+            ElMessage.success('登录成功');
 
-            router.push('/home')
+            router.push('/home');
          } else {
             ElMessage.error('账号或者密码错误')
          }
@@ -80,18 +79,6 @@ function login() {
    }
 
 }
-
-function isLogin() {
-   let token = localStorage.getItem('Authorization')
-   if (token) {
-      router.push('/home')
-   }
-}
-
-// Execute before components mounted.
-onBeforeMount(() => {
-   isLogin()
-})
 
 </script>
 
