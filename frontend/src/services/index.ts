@@ -45,7 +45,7 @@ Api.interceptors.response.use(
 );
 
 function errorHandler(error: any) {
-  ElMessage.error("未知错误，请联系管理员");
+  ElMessage.error("系统异常，请联系管理员");
   return Promise.reject(error);
 }
 
