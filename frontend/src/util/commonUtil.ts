@@ -1,7 +1,7 @@
 // 获取登录token
 export function getToken():string {
-  let token = localStorage.getItem("token");
-  return token === undefined ? token : "";
+  let token = localStorage.getItem("Authorization");
+  return token != undefined ? token : "";
 }
 
 // 生成随机字符串

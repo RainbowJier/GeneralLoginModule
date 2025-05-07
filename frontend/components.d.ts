@@ -15,6 +15,7 @@ declare module 'vue' {
     ElInput: typeof import('element-plus/es')['ElInput']
     Login: typeof import('./src/components/index/Login.vue')['default']
     Register: typeof import('./src/components/index/Register.vue')['default']
+    ResetPwd: typeof import('./src/components/index/ResetPwd.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

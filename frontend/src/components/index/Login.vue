@@ -14,6 +14,12 @@
             </el-form-item>
 
             <el-form-item>
+               <el-button style="position: absolute;  right: 10px; margin-top: 10px; color: gray;" type="text">
+                  <RouterLink to="/resetPwd">忘记密码</RouterLink>
+               </el-button>
+            </el-form-item>
+
+            <el-form-item>
                <el-button type="primary" @click="login">登录</el-button>
 
                <el-button style="position: absolute;  right: 10px; margin-top: 10px;" type="text">
@@ -27,10 +33,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref,onBeforeMount } from 'vue'
 import { ElMessage } from 'element-plus'
 import { RouterLink } from 'vue-router'
-import api from '@/services/index.ts'
+import Api from '@/services/index.ts'
 import router from '@/router/index.ts'
 import { Validator } from '@/util/Validator'
 
@@ -55,10 +61,11 @@ function login() {
    }
 
    try {
-      api.post('/system/login', userInfo.value).then((res) => {
+      Api.post('/system/login', userInfo.value).then((res) => {
          let resData = res.data
          if (resData.code === 200) {
-            localStorage.setItem('token', resData.data.token.tokenValue)
+            console.log(resData.data.tokenInfo);
+            localStorage.setItem('Authorization', resData.data.tokenInfo.tokenValue)
             localStorage.setItem('userInfo', JSON.stringify(resData.data.userInfo))
 
             ElMessage.success('登录成功')
@@ -73,6 +80,19 @@ function login() {
    }
 
 }
+
+function isLogin() {
+   let token = localStorage.getItem('Authorization')
+   if (token) {
+      router.push('/home')
+   }
+}
+
+// Execute before components mounted.
+onBeforeMount(() => {
+   isLogin()
+})
+
 </script>
 
 <style scoped>

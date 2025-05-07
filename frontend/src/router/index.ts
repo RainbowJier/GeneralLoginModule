@@ -17,6 +17,11 @@ const routes = [
         name: "register",
         component: () => import("@/components/index/Register.vue"),  
       },
+      {
+        path: "/resetPwd",
+        name: "resetPwd",
+        component: () => import("@/components/index/ResetPwd.vue"),  
+      },
     ],
   },
   {
@@ -28,6 +33,10 @@ const routes = [
     ],
   },
 ];
+
+
+
+
 
 // 创建路由实例
 const router = createRouter({

@@ -14,7 +14,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Accessors(chain = true)
 public class SysUserDTO implements Serializable {
-    private String id;
+    private Long id;
 
     /**
      * 账号
@@ -44,11 +44,11 @@ public class SysUserDTO implements Serializable {
     /**
      * 创建时间
      */
-    private Date createTime;
+    private String createTime;
 
     /**
      * 更新时间
      */
-    private Date updateTime;
+    private String updateTime;
 }
 

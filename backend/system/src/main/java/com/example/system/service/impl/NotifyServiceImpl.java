@@ -2,7 +2,7 @@ package com.example.system.service.impl;
 
 import com.example.common.constant.RedisKey;
 import com.example.common.enums.BizCode;
-import com.example.common.enums.SendCodeEnum;
+import com.example.common.enums.SendCode;
 import com.example.common.util.CheckUtil;
 import com.example.common.util.CommonUtil;
 import com.example.common.util.JsonData;
@@ -12,13 +12,10 @@ import com.example.system.config.SmsConfig;
 import com.example.system.service.NotifyService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.platform.commons.util.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import javax.mail.MessagingException;
 import java.util.concurrent.TimeUnit;
 
 
@@ -52,7 +49,7 @@ public class NotifyServiceImpl implements NotifyService {
      * Send Email code.
      */
     @Override
-    public JsonData sendCode(SendCodeEnum sendCodeEnum, String to) {
+    public JsonData sendCode(SendCode sendCodeEnum, String to) {
         // Check whether the code has been sent within 60 seconds.
         String key = String.format(RedisKey.CHECK_CODE_KEY, sendCodeEnum.name(), to);
         String codeValue = (String) redisTemplate.opsForValue().get(key);
@@ -90,7 +87,7 @@ public class NotifyServiceImpl implements NotifyService {
 
 
     @Override
-    public boolean checkCode(SendCodeEnum sendCodeEnum, String to, String code) {
+    public boolean checkCode(SendCode sendCodeEnum, String to, String code) {
         // Get the code from Redis.
         String cacheKey = String.format(RedisKey.CHECK_CODE_KEY, sendCodeEnum.name(), to);
         String cacheValue = (String) redisTemplate.opsForValue().get(cacheKey);

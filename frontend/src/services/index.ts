@@ -2,10 +2,11 @@ import axios from 'axios';
 import type { AxiosRequestConfig, AxiosResponse,AxiosInstance } from 'axios'; 
 import { ElMessage } from "element-plus"; 
 import {getToken} from "@/util/commonUtil";
+import router from '@/router';
 
 // create an axois instance with a custom config.
 const Api = axios.create({
-  baseURL: "http://localhost:9000/",
+  baseURL: "http://localhost:9111/",
   timeout: 10000,
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded'
@@ -15,7 +16,7 @@ const Api = axios.create({
 // interceptor before request.
 Api.interceptors.request.use(
   (config) => {
-    config.headers["token"] = getToken();
+    config.headers['Authorization'] = getToken();
     return config;
   },
   (error) => {

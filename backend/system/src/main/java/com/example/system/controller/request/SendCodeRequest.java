@@ -16,4 +16,5 @@ public class SendCodeRequest {
      */
     private String to;
 
+    private String captchaKeyType;
 }

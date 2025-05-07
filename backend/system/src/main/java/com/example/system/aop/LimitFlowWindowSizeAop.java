@@ -1,33 +1,21 @@
 package com.example.system.aop;
 
-
 import com.alibaba.fastjson.JSON;
 import com.example.common.constant.RedisKey;
 import com.example.common.enums.BizCode;
 import com.example.common.exception.BizException;
-import com.example.common.util.CommonUtil;
 import com.example.common.util.JsonUtil;
-import com.example.system.aop.annotation.LimitFlowAnno;
-import com.example.system.aop.annotation.SysLogAnno;
+import com.example.system.aop.annotation.LimitFlowWindowSizeAnno;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.codec.digest.Md5Crypt;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
-import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.core.annotation.Order;
 import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.data.redis.core.script.DefaultRedisScript;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import java.util.Collections;
 import java.util.HashMap;
 
@@ -35,21 +23,22 @@ import java.util.HashMap;
 @Aspect
 @Slf4j
 @Order(2)
-public class LimitFlowAop {
+public class LimitFlowWindowSizeAop {
 
-    private final long UNIT = 60 * 1000;
+    private final long MINUTE_UNIT = 60 * 1000;
 
     @Resource
     private StringRedisTemplate stringRedisTemplate;
 
     @Before("@annotation(limitFlowAnno)")
-    private void handleBefore(JoinPoint joinPoint, LimitFlowAnno limitFlowAnno) {
+    private void handleBefore(JoinPoint joinPoint, LimitFlowWindowSizeAnno limitFlowAnno) {
+        // Get request params.
         String argJsonStr = JSON.toJSONString(joinPoint.getArgs()[0]);
         HashMap<String, String> requestMap = JsonUtil.jsonStrToObj(argJsonStr, HashMap.class);
 
         String email = requestMap.get("to");
         String behavior = limitFlowAnno.behavior();
-        String key = String.format(RedisKey.LIMIT_FLOW_KEY, behavior, email);
+        String key = String.format(RedisKey.LIMIT_FLOW_WINDOW_SIZE_KEY, behavior, email);
 
         if (isAllow(key, limitFlowAnno)) {
             log.info("请求通过");
@@ -58,7 +47,7 @@ public class LimitFlowAop {
         }
     }
 
-    private boolean isAllow(String key, LimitFlowAnno limitFlowAnno) {
+    private boolean isAllow(String key, LimitFlowWindowSizeAnno limitFlowAnno) {
         String luaScript = """
                 local key = KEYS[1]
                 local current_time = tonumber(ARGV[1])
@@ -80,7 +69,7 @@ public class LimitFlowAop {
                 return "1"  -- allow
                 """;
 
-        long windowSizeMillis = limitFlowAnno.windowSize() * UNIT;
+        long windowSizeMillis = limitFlowAnno.windowSize() * MINUTE_UNIT;
         long requestLimit = limitFlowAnno.requestLimit();
         long currentTimestamp = System.currentTimeMillis();
 

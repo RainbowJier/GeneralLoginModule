@@ -1,6 +1,7 @@
 package com.example.system.manager.Impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.example.common.util.JsonData;
 import com.example.system.manager.SysUserManager;
 import com.example.system.mapper.SysUserMapper;
 import com.example.system.model.entity.SysUser;
@@ -23,11 +24,19 @@ public class SysUserManagerImpl implements SysUserManager {
     }
 
     @Override
-    public SysUser selectList(String email) {
+    public SysUser selectOne(String email) {
         LambdaQueryWrapper<SysUser> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(SysUser::getEmail, email)
                 .eq(SysUser::getStatus, 1);
 
         return sysUserMapper.selectOne(queryWrapper);
     }
+
+    @Override
+    public List<SysUser> selectAllUsers() {
+        List<SysUser> sysUsers = sysUserMapper.selectList(null);
+        return sysUsers;
+    }
+
+
 }

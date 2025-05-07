@@ -4,16 +4,17 @@ package com.example.system.controller;
 import com.example.common.constant.RedisKey;
 import com.example.common.enums.BizCode;
 import com.example.common.enums.OperationType;
-import com.example.common.enums.SendCodeEnum;
+import com.example.common.enums.SendCode;
 import com.example.common.exception.BizException;
 import com.example.common.util.CommonUtil;
 import com.example.common.util.JsonData;
-import com.example.system.aop.annotation.LimitFlowAnno;
+import com.example.system.aop.annotation.LimitFlowWindowSizeAnno;
 import com.example.system.aop.annotation.SysLogAnno;
 import com.example.system.controller.request.SendCodeRequest;
 import com.example.system.service.NotifyService;
 import com.google.code.kaptcha.Producer;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.kafka.common.network.Send;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
@@ -49,12 +50,12 @@ public class NotifyController {
     private Long CAPTCHA_EXPIRE_TIME;
 
     /**
-     * Seng Captcha code
+     * Send Captcha code
      */
     @SysLogAnno(description = "Captcha code", operateType = OperationType.OTHER)
     @GetMapping("/captcha")
-    public void getCaptcha(HttpServletRequest request, HttpServletResponse response) {
-        String key = getCaptchaKey(request);
+    public void getCaptcha(@RequestParam("captchaKeyType") String captchaKeyType, HttpServletRequest request, HttpServletResponse response) {
+        String key = getCaptchaKey(request, captchaKeyType);
         String value = captchaProducer.createText();
         log.info("Captcha code: {}", value);
 
@@ -75,11 +76,18 @@ public class NotifyController {
         }
     }
 
-    public String getCaptchaKey(HttpServletRequest request) {
+    public String getCaptchaKey(HttpServletRequest request, String captchaKeyType) {
         String ip = CommonUtil.getIpAddr(request);
         String userAgent = request.getHeader("User-Agent");
 
-        return String.format(RedisKey.REGISTER_CAPTCHA_KEY, CommonUtil.MD5(ip + userAgent));
+        String name = switch (captchaKeyType) {
+            case "register" -> SendCode.USER_REGISTER.name();
+            case "login" -> SendCode.USER_LOGIN.name();
+            case "resetPassword" -> SendCode.USER_RESET_PASSWORD.name();
+            default -> "";
+        };
+
+        return String.format(RedisKey.CHECK_CODE_CAPTCHA_KEY, name, CommonUtil.MD5(ip + userAgent));
     }
 
 
@@ -87,11 +95,11 @@ public class NotifyController {
      * Send code.
      */
     @SysLogAnno(description = "Send phone / mail code", operateType = OperationType.OTHER)
-    @LimitFlowAnno(behavior = "emailCode", windowSize = 1, requestLimit = 3)
+    @LimitFlowWindowSizeAnno(behavior = "emailCode", windowSize = 1, requestLimit = 3)
     @PostMapping("sendCode")
     public JsonData sendCode(SendCodeRequest sendCodeRequest, HttpServletRequest request) throws MessagingException {
         // Obtain the captcha code.
-        String key = getCaptchaKey(request);
+        String key = getCaptchaKey(request, "register");
         String codeCache = (String) redisTemplate.opsForValue().get(key);
         String code = sendCodeRequest.getCode();
 
@@ -101,7 +109,7 @@ public class NotifyController {
                 // delete captcha code.
                 redisTemplate.delete(key);
 
-                notifyService.sendCode(SendCodeEnum.USER_REGISTER, sendCodeRequest.getTo());
+                notifyService.sendCode(SendCode.USER_REGISTER, sendCodeRequest.getTo());
 
                 return JsonData.buildSuccess();
             }

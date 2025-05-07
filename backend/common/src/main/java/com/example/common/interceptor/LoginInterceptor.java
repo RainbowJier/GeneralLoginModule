@@ -1,5 +1,6 @@
 package com.example.common.interceptor;
 
+import cn.dev33.satoken.stp.StpUtil;
 import com.example.common.entity.LoginUser;
 import com.example.common.enums.BizCode;
 import com.example.common.util.JWTUtil;
@@ -26,7 +27,7 @@ import javax.servlet.http.HttpServletResponse;
 @Slf4j
 public class LoginInterceptor implements HandlerInterceptor {
 
-    public static ThreadLocal<LoginUser> threadLocal = new ThreadLocal<>();
+    public static ThreadLocal<Long> threadLocal = new ThreadLocal<>();
 
     /**
      * 处理请求前拦截
@@ -40,43 +41,17 @@ public class LoginInterceptor implements HandlerInterceptor {
             return true;
         }
 
-        // 获取token
-        String accessToken = request.getHeader("token");
-        if (!StringUtils.isNotBlank(accessToken)) {
-            // 有些情况，请求头中token可能为空，就从参数中获取token
-            accessToken = request.getParameter("token");
+        String token = request.getHeader("Authorization");
+        String loginId = (String) StpUtil.getLoginIdByToken(token);
+
+        if(loginId == null){
+            CommonUtil.sendJsonMessage(response, JsonData.buildError(BizCode.ACCOUNT_UNLOGIN));
+            return false;
         }
 
-        if (StringUtils.isNotBlank(accessToken)) {
-            Claims claims = JWTUtil.checkJWT(accessToken);
-            if (claims == null) {
-                // 未登录
-                CommonUtil.sendJsonMessage(response, JsonData.buildError(BizCode.ACCOUNT_UNLOGIN));
-                return false;
-            }
+        threadLocal.set(Long.valueOf(loginId));
 
-            // 用户已经登录
-            Long accountNo = Long.valueOf(claims.get("account_no").toString());
-            String username = claims.get("username").toString();
-            String mail = claims.get("mail").toString();
-            String phone = claims.get("phone").toString();
-
-            LoginUser loginUser = LoginUser.builder()
-                    .account(String.valueOf(accountNo))
-                    .username(username)
-                    .email(mail)
-                    .phone(phone)
-                    .build();
-
-            // request.setAttribute("loginUser", loginUser);
-
-            // 将参数传入当前线程
-            threadLocal.set(loginUser);
-
-            return true;
-        }
-        CommonUtil.sendJsonMessage(response, JsonData.buildError(BizCode.ACCOUNT_UNLOGIN));
-        return false;
+        return true;
     }
 
     @Override

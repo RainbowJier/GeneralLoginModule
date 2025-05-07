@@ -142,7 +142,7 @@ async function register() {
 
 async function getCaptcha() {
    try {
-      const res = await api.get('/system/captcha', { responseType: 'blob' })
+      const res = await api.get('/system/captcha?captchaKeyType=register', { responseType: 'blob' })
       const blob = new Blob([res.data], { type: 'image/png' })
       captchaImage.value = URL.createObjectURL(blob)
    } catch (err) {

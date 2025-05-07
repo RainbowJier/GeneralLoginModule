@@ -5,79 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a1ead5d-e6c9-43e0-b808-09b27100863b" name="Changes" comment="New(system): optimize login logic.">
-      <change afterPath="$PROJECT_DIR$/../.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/ApifoxUploaderProjectSetting.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/281f116c-c9e8-445b-b847-bcca1d79e8cd.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/281f116c-c9e8-445b-b847-bcca1d79e8cd/storage_v2/_src_/schema/general_db.Nd80Eg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/281f116c-c9e8-445b-b847-bcca1d79e8cd/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/281f116c-c9e8-445b-b847-bcca1d79e8cd/storage_v2/_src_/schema/mysql.osA4Bg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/281f116c-c9e8-445b-b847-bcca1d79e8cd/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/281f116c-c9e8-445b-b847-bcca1d79e8cd/storage_v2/_src_/schema/sys.zb4BAA.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/easyCodeTableSettingEncode.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/target/classes/com/example/common/config/MybatisPlusPageConfig.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/target/classes/com/example/common/config/RedisTemplateConfiguration.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/target/classes/com/example/common/config/RestTemplateConfig.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/target/classes/com/example/common/constant/RedisKey.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/target/classes/com/example/common/constant/TimeConstant.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/target/classes/com/example/common/entity/EventMessage$EventMessageBuilder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/target/classes/com/example/common/entity/EventMessage.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/target/classes/com/example/common/entity/LoginUser$LoginUserBuilder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/target/classes/com/example/common/entity/LoginUser.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/target/classes/com/example/common/enums/BizCode.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/target/classes/com/example/common/enums/EventMessageType.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/target/classes/com/example/common/enums/OperationType.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/target/classes/com/example/common/enums/SendCodeEnum.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/target/classes/com/example/common/exception/BizException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/target/classes/com/example/common/exception/CustomExceptionHandler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/target/classes/com/example/common/interceptor/LoginInterceptor.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/target/classes/com/example/common/util/CheckUtil.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/target/classes/com/example/common/util/CommonUtil.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/target/classes/com/example/common/util/JWTUtil.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/target/classes/com/example/common/util/JsonData.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/target/classes/com/example/common/util/JsonUtil.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/target/classes/com/example/common/util/TimeUtil.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/system/target/classes/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/system/target/classes/com/example/system/SystemApplication.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/system/target/classes/com/example/system/aop/LimitFlowAop.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/system/target/classes/com/example/system/aop/SysLogAop.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/system/target/classes/com/example/system/aop/annotation/LimitFlowAnno.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/system/target/classes/com/example/system/aop/annotation/SysLogAnno.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/system/target/classes/com/example/system/component/EmailComponent.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/system/target/classes/com/example/system/component/SmsComponent.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/system/target/classes/com/example/system/config/CaptchaConfig.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/system/target/classes/com/example/system/config/CorsConfig.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/system/target/classes/com/example/system/config/InterceptorConfig.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/system/target/classes/com/example/system/config/SmsConfig.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/system/target/classes/com/example/system/config/ThreadPoolTaskConfig.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/system/target/classes/com/example/system/controller/LoginController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/system/target/classes/com/example/system/controller/NotifyController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/system/target/classes/com/example/system/controller/request/LoginRequest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/system/target/classes/com/example/system/controller/request/RegisterRequest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/system/target/classes/com/example/system/controller/request/SendCodeRequest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/system/target/classes/com/example/system/manager/Impl/SysUserManagerImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/system/target/classes/com/example/system/manager/SysUserManager.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/system/target/classes/com/example/system/mapper/SysUserMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/system/target/classes/com/example/system/model/dto/SysUserDTO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/system/target/classes/com/example/system/model/entity/SysUser.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/system/target/classes/com/example/system/service/NotifyService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/system/target/classes/com/example/system/service/SysUserService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/system/target/classes/com/example/system/service/impl/NotifyServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/system/target/classes/com/example/system/service/impl/SysUserServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/system/target/test-classes/com/example/system/AccountApplicationTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/example/common/constant/RedisKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/example/common/constant/RedisKey.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/com/example/common/constant/RedisKey.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/example/common/constant/RedisKey.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/src/main/java/com/example/system/controller/NotifyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/system/src/main/java/com/example/system/controller/NotifyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/src/main/java/com/example/system/controller/request/SendCodeRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/system/src/main/java/com/example/system/controller/request/SendCodeRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/src/main/java/com/example/system/service/impl/SysUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/system/src/main/java/com/example/system/service/impl/SysUserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/components.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/components.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/index/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/index/Login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/index/Register.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/index/Register.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/router/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +71,7 @@
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;Spring Boot.AccountApplication.executor&quot;: &quot;Run&quot;,
     &quot;Spring Boot.FrameApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.SystemApplication.executor&quot;: &quot;Debug&quot;,
+    &quot;Spring Boot.SystemApplication.executor&quot;: &quot;Run&quot;,
     &quot;com.dong.plugin.component.SettingConsoleTools$DonateAnAction&quot;: &quot;true&quot;,
     &quot;com.dong.plugin.gui.FormatDialog&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
@@ -142,7 +83,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;模块&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;项目&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15527344&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;File.Encoding&quot;,
@@ -258,6 +199,11 @@
       <workItem from="1746249637977" duration="814000" />
       <workItem from="1746252605674" duration="260000" />
       <workItem from="1746427186264" duration="1789000" />
+      <workItem from="1746502538213" duration="32000" />
+      <workItem from="1746519749953" duration="5000" />
+      <workItem from="1746520310091" duration="624000" />
+      <workItem from="1746520954151" duration="876000" />
+      <workItem from="1746581010156" duration="6000" />
     </task>
     <task id="LOCAL-00001" summary="新增：新增注册模块（待完善）">
       <option name="closed" value="true" />
@@ -339,17 +285,6 @@
     <MESSAGE value="New(system): cors config" />
     <MESSAGE value="New(system): optimize login logic." />
     <option name="LAST_COMMIT_MESSAGE" value="New(system): optimize login logic." />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/system/src/main/java/com/example/system/controller/LoginController.java</url>
-          <line>44</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

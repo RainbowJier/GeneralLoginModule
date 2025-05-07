@@ -5,8 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
-import java.util.Date;
 import java.io.Serializable;
+import java.util.Date;
 
 
 @Data
@@ -46,10 +46,10 @@ public class SysUser implements Serializable {
     /**
      * 创建时间
      */
-    private Date createTime;
+    private String createTime;
     /**
      * 更新时间
      */
-    private Date updateTime;
+    private String updateTime;
 }
 

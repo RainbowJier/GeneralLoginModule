@@ -5,17 +5,19 @@ import cn.dev33.satoken.stp.SaTokenInfo;
 import cn.dev33.satoken.stp.StpUtil;
 import com.example.common.entity.LoginUser;
 import com.example.common.enums.BizCode;
-import com.example.common.enums.SendCodeEnum;
+import com.example.common.enums.SendCode;
 import com.example.common.exception.BizException;
 import com.example.common.util.CommonUtil;
 import com.example.common.util.JsonData;
 import com.example.system.controller.request.LoginRequest;
 import com.example.system.controller.request.RegisterRequest;
-import com.example.system.controller.request.ResetUserRequest;
+import com.example.system.controller.request.ResetPwdRequest;
 import com.example.system.manager.SysUserManager;
+import com.example.system.model.dto.SysUserDTO;
 import com.example.system.model.entity.SysUser;
 import com.example.system.service.NotifyService;
 import com.example.system.service.SysUserService;
+import com.fasterxml.jackson.databind.util.BeanUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.digest.Md5Crypt;
 import org.springframework.beans.BeanUtils;
@@ -23,7 +25,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 @Slf4j
 @Service
@@ -41,7 +45,7 @@ public class SysUserServiceImpl implements SysUserService {
         String code = registerRequest.getCode();
 
         // Check the code.
-        boolean checkCode = notifyService.checkCode(SendCodeEnum.USER_REGISTER, email, code);
+        boolean checkCode = notifyService.checkCode(SendCode.USER_REGISTER, email, code);
         if (!checkCode) {
             return JsonData.buildError(BizCode.CODE_ERROR);
         }
@@ -74,7 +78,7 @@ public class SysUserServiceImpl implements SysUserService {
     @Override
     public JsonData login(LoginRequest loginRequest) {
         // Check user exist
-        SysUser sysUser = sysUserManager.selectList(loginRequest.getEmail());
+        SysUser sysUser = sysUserManager.selectOne(loginRequest.getEmail());
 
         if (sysUser == null) {
             return JsonData.buildError(BizCode.ACCOUNT_UNREGISTER);
@@ -93,14 +97,14 @@ public class SysUserServiceImpl implements SysUserService {
         StpUtil.login(userId);
 
         // Generate token.
-        SaTokenInfo token = StpUtil.getTokenInfo();
+        SaTokenInfo tokenInfo = StpUtil.getTokenInfo();
 
         // Return the current user info.
         LoginUser loginUser = new LoginUser();
         BeanUtils.copyProperties(sysUser, loginUser);
 
         HashMap<String, Object> resultMap = new HashMap<>();
-        resultMap.put("token", token);
+        resultMap.put("tokenInfo", tokenInfo);
         resultMap.put("userInfo",loginUser);
         return JsonData.buildSuccess(resultMap);
     }
@@ -116,8 +120,41 @@ public class SysUserServiceImpl implements SysUserService {
     }
 
     @Override
-    public JsonData reset(ResetUserRequest resetUserRequest) {
+    public JsonData reset(ResetPwdRequest resetUserRequest) {
+        // Check email exits or not.
+        SysUser sysUser = sysUserManager.selectOne(resetUserRequest.getEmail());
+        if (sysUser == null) {
+            return JsonData.buildError(BizCode.ACCOUNT_UNREGISTER);
+        }
+
+        // Verify the email code.
+        String email = resetUserRequest.getEmail();
+        String code = resetUserRequest.getCode();
+        boolean checkCode = notifyService.checkCode(SendCode.USER_RESET_PASSWORD, email, code);
+        if (!checkCode) {
+            return JsonData.buildError(BizCode.CODE_ERROR);
+        }
+
+        // Check the reset times are more than 5 times in 24 hours or not.
+
+        // Record the times the user has tried to reset password in the Redis.
+
         return null;
+    }
+
+    @Override
+    public JsonData selectAllUsers() {
+        List<SysUser> sysUsers = sysUserManager.selectAllUsers();
+
+        List<SysUserDTO> list = new ArrayList<>();
+
+        for (SysUser sysUser : sysUsers) {
+            SysUserDTO sysUserDTO = new SysUserDTO();
+            BeanUtils.copyProperties(sysUser, sysUserDTO);
+            list.add(sysUserDTO);
+        }
+
+        return JsonData.buildSuccess(list);
     }
 }
 

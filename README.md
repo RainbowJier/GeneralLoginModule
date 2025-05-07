@@ -22,13 +22,13 @@
             * [注册邮箱唯一性保证方案](#注册邮箱唯一性保证方案)
       + [登录](#登录)
          - [邮箱密码登录](#邮箱密码登录)
-         - [todo:找回密码](#todo找回密码)
       + [验证码接口限流](#验证码接口限流)
          - [背景](#背景)
          - [常见的方案](#常见的方案)
          - [时间滑动窗口](#时间滑动窗口)
             * [实现思路](#实现思路)
             * [代码实现](#代码实现)
+      + [找回密码](#找回密码)
    * [参考资料](#参考资料)
 
 
@@ -200,15 +200,9 @@ Kaptcha 框架是由 Google 开源的一款高度可定制的验证码生成解�
 2. **参数校验**：对于“登录请求”时不需要校验 Token 的，所以直接放行。 请求被转发到 user 用户服务这里，流程也很简单。
    1. 先针对参数进行校验，非空、是否合法
       1. 如果参数有问题，则直接返回登录失败信息。
-      2. 如果参数没问题，就判断一下账号密码是否频繁登录，这里我是借助 redis 的 zset 数据结构设计了一个时间窗口限流算法实现的。
    2. 如果没有限流，就查询用户数据，用户是否存在，如果不存在就返回登录失败
    3. 如果存在，就校验密码，我们是使用加随机盐的一个工具类 BCrypt 实现的，它的安全度更高。 如果密码校验通过，就封装用户数据，比如用户名、账号、邮箱等信息，封装到 JWT Token 的载荷中， 返回给前端就可以了。
 3. **访问其他资源**：以后前端就带着这个 Token 访问其他资源，当然了，**拦截器**会针对 Token 进行校验，比如访问受限资源，需要判断是否有 Token，判断 Token 是否有效，如果 Token 没问题，就将请求 放给后面的微服务。  
-
-
-
-#### 🎯todo:找回密码
-
 
 --- 
 
@@ -369,7 +363,7 @@ public class LimitFlowAop {
 
 		String email = requestMap.get("to");
 		String behavior = limitFlowAnno.behavior();
-		String key = String.format(RedisKey.LIMIT_FLOW_KEY, behavior, email);
+		String key = String.format(RedisKey.LIMIT_FLOW_CAPTCHA_KEY, behavior, email);
 
 		if (isAllow(key, limitFlowAnno)) {
 			log.info("请求通过");
@@ -379,6 +373,25 @@ public class LimitFlowAop {
 	}
 }
 ```
+
+### 找回密码
+<img src="images/resetPwd/resetPwd.png" width="400">
+
+##### 开发思路
+1. 用户点击“忘记密码”，输入邮箱； 
+2. 系统验证邮箱存在，发送验证码（如 6 位数字）； 
+3. 用户输入验证码 + 新密码； 
+4. 系统校验验证码，通过后修改密码； 
+5. 限制：AOP拦截校验 + Redis 限制修改的次数，同一个邮箱一天只能修改 N 次。
+   6. key = `limit_flow:reset_pwd:邮箱`
+   7. value = `次数`
+   8. 设置过期时间为当天过期
+
+##### 相关代码
+1. AOP 拦截：
+2. 修改代码接口：
+
+
 
 
 --- 
