@@ -35,6 +35,9 @@ public enum BizCode {
     PHONE_REPEAT(250005, "当前手机号已经注册"),
     EMAIL_REPEAT(250006, "当前邮箱已经注册"),
     FAIL_SEND_EMAIL(250007, "邮箱发送失败"),
+    RESET_PASSWORD_LIMIT(250008,"重置密码次数上限"),
+    RESET_PASSWORD_FAIL(250009, "重置密码失败"),
+
 
 
     /**

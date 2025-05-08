@@ -16,7 +16,7 @@ public class InterceptorConfig implements WebMvcConfigurer {
                 .addPathPatterns("/system/*/**")
                 .excludePathPatterns(
                         "/system/register","/system/login",
-                        "/system/captcha","/system/sendCode"
+                        "/system/captcha","/system/sendCode","/system/resetPwd"
                 );
     }
 }

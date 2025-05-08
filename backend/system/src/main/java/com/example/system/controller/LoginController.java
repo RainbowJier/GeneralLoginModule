@@ -62,8 +62,8 @@ public class LoginController {
      * Reset password
      */
     @SysLogAnno(description = "Reset UserInfo", operateType = OperationType.UPDATE)
-    @PostMapping("reset")
-    public JsonData reset(ResetPwdRequest resetPwdRequest) {
+    @PostMapping("resetPwd")
+    public JsonData resetPwd(ResetPwdRequest resetPwdRequest) {
         return sysUserService.reset(resetPwdRequest);
     }
 

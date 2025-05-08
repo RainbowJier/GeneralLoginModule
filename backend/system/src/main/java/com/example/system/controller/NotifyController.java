@@ -76,21 +76,6 @@ public class NotifyController {
         }
     }
 
-    public String getCaptchaKey(HttpServletRequest request, String captchaKeyType) {
-        String ip = CommonUtil.getIpAddr(request);
-        String userAgent = request.getHeader("User-Agent");
-
-        String name = switch (captchaKeyType) {
-            case "register" -> SendCode.USER_REGISTER.name();
-            case "login" -> SendCode.USER_LOGIN.name();
-            case "resetPassword" -> SendCode.USER_RESET_PASSWORD.name();
-            default -> "";
-        };
-
-        return String.format(RedisKey.CHECK_CODE_CAPTCHA_KEY, name, CommonUtil.MD5(ip + userAgent));
-    }
-
-
     /**
      * Send code.
      */
@@ -98,8 +83,10 @@ public class NotifyController {
     @LimitFlowWindowSizeAnno(behavior = "emailCode", windowSize = 1, requestLimit = 3)
     @PostMapping("sendCode")
     public JsonData sendCode(SendCodeRequest sendCodeRequest, HttpServletRequest request) throws MessagingException {
+        String keyType = sendCodeRequest.getCaptchaKeyType();
+
         // Obtain the captcha code.
-        String key = getCaptchaKey(request, "register");
+        String key = getCaptchaKey(request, keyType);
         String codeCache = (String) redisTemplate.opsForValue().get(key);
         String code = sendCodeRequest.getCode();
 
@@ -109,12 +96,33 @@ public class NotifyController {
                 // delete captcha code.
                 redisTemplate.delete(key);
 
-                notifyService.sendCode(SendCode.USER_REGISTER, sendCodeRequest.getTo());
+                notifyService.sendCode(getType(keyType), sendCodeRequest.getTo());
 
                 return JsonData.buildSuccess();
             }
         }
 
-        return JsonData.buildError("Error Captcha Code.");
+        return JsonData.buildError("图形验证码错误");
     }
+
+
+    private String getCaptchaKey(HttpServletRequest request, String captchaKeyType) {
+        String ip = CommonUtil.getIpAddr(request);
+        String userAgent = request.getHeader("User-Agent");
+
+        String name = getType(captchaKeyType);
+
+        return String.format(RedisKey.CHECK_CODE_CAPTCHA_KEY, name, CommonUtil.MD5(ip + userAgent));
+    }
+
+    private String getType(String str){
+        return switch (str) {
+            case "register" -> SendCode.USER_REGISTER.name();
+            case "login" -> SendCode.USER_LOGIN.name();
+            case "resetPassword" -> SendCode.USER_RESET_PASSWORD.name();
+            default -> "";
+        };
+    }
+
+
 }

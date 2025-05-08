@@ -1,7 +1,7 @@
 import axios from "axios";
 import type { AxiosRequestConfig, AxiosResponse, AxiosInstance } from "axios";
 import { ElMessage } from "element-plus";
-import { getToken } from "@/util/commonUtil";
+import { getToken } from "@/util/CommonUtil";
 import router from "@/router";
 
 // create an axois instance with a custom config.

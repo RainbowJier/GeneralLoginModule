@@ -17,10 +17,6 @@ public interface SysUserService {
 
     JsonData login(LoginRequest loginRequest);
 
-    JsonData getUserById(String id);
-
-    JsonData selectAll(int pageNum, int pageSize);
-
     JsonData reset(ResetPwdRequest resetPwdRequest);
 
     JsonData selectAllUsers();

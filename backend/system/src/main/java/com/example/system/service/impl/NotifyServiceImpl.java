@@ -49,9 +49,9 @@ public class NotifyServiceImpl implements NotifyService {
      * Send Email code.
      */
     @Override
-    public JsonData sendCode(SendCode sendCodeEnum, String to) {
+    public JsonData sendCode(String keyType, String to) {
         // Check whether the code has been sent within 60 seconds.
-        String key = String.format(RedisKey.CHECK_CODE_KEY, sendCodeEnum.name(), to);
+        String key = String.format(RedisKey.CHECK_CODE_KEY, keyType, to);
         String codeValue = (String) redisTemplate.opsForValue().get(key);
 
         if (StringUtils.isNotBlank(codeValue)) {
@@ -87,9 +87,9 @@ public class NotifyServiceImpl implements NotifyService {
 
 
     @Override
-    public boolean checkCode(SendCode sendCodeEnum, String to, String code) {
+    public boolean checkCode(String keyType, String to, String code) {
         // Get the code from Redis.
-        String cacheKey = String.format(RedisKey.CHECK_CODE_KEY, sendCodeEnum.name(), to);
+        String cacheKey = String.format(RedisKey.CHECK_CODE_KEY, keyType, to);
         String cacheValue = (String) redisTemplate.opsForValue().get(cacheKey);
 
         if (StringUtils.isNotBlank(cacheValue)) {

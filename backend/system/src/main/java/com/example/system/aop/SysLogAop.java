@@ -64,15 +64,6 @@ public class SysLogAop {
         log.info("请求方式   : {}", request.getMethod());
         log.info("接口描述   : {}", systemlog.description());
         log.info("请求类名   : {}.{}", joinPoint.getSignature().getDeclaringTypeName(), joinPoint.getSignature().getName());
-
-        try {
-            String argJsonStr = JSON.toJSONString(joinPoint.getArgs()[0]);
-            HashMap<String,String> requestMap = JsonUtil.jsonStrToObj(argJsonStr,HashMap.class);
-            log.info("传入参数   : {}", requestMap);
-        }catch (Exception e){
-            log.info("传入参数   : null");
-        }
-
     }
 
 

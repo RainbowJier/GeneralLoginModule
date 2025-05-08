@@ -1,36 +1,36 @@
 <template>
-   <div class="register-wrapper">
-      <el-card class="register-card">
+   <div class="reset-wrapper">
+      <el-card class="reset-card">
          <div style="text-align: center">
-            <h2>注册页面</h2>
+            <h2>找回密码</h2>
          </div>
-         <el-form :model="registerRequest" label-width="100px" :rules="rules" ref="formRef">
+         <el-form :model="resetPwdRequest" label-width="100px" :rules="rules" ref="formRef">
             <el-form-item label="邮箱" prop="email">
-               <el-input v-model="registerRequest.email" placeholder="请输入邮箱" />
+               <el-input v-model="resetPwdRequest.email" placeholder="请输入邮箱" />
             </el-form-item>
 
             <el-form-item label="图形验证码" prop="captcha">
                <div style="display: flex; align-items: center;">
-                  <el-input v-model="registerRequest.captcha" placeholder="请输入图形验证码" style="flex: 1;" />
+                  <el-input v-model="resetPwdRequest.captcha" placeholder="请输入图形验证码" style="flex: 1;" />
                   <img :src="captchaImage" alt="验证码" @click="getCaptcha" style="margin-left: 10px; cursor: pointer;" />
                </div>
             </el-form-item>
 
             <el-form-item label="邮箱验证码" prop="code">
                <div style="display: flex; align-items: center;">
-                  <el-input v-model="registerRequest.code" placeholder="请输入验证码" />
+                  <el-input v-model="resetPwdRequest.code" placeholder="请输入验证码" />
                   <el-button @click="sendCode" :disabled="countdown > 0" style="margin-left:10px">
                      {{ countdown > 0 ? `${countdown}s` : '发送验证码' }}
                   </el-button>
                </div>
             </el-form-item>
 
-            <el-form-item label="密码" prop="password">
-               <el-input v-model="registerRequest.password" type="password" placeholder="请输入密码" />
+            <el-form-item label="重置密码" prop="password">
+               <el-input v-model="resetPwdRequest.password" type="password" placeholder="请输入新密码" />
             </el-form-item>
 
             <el-form-item>
-               <el-button type="primary" @click="register">注册</el-button>
+               <el-button type="primary" @click="resetPwd()">重置密码</el-button>
 
                <el-button style="position: absolute;  right: 10px; margin-top: 10px;" type="text">
                   <RouterLink to="/">登录</RouterLink>
@@ -39,26 +39,28 @@
          </el-form>
       </el-card>
    </div>
+
 </template>
 
-<script setup lang="ts" name="Register">
+
+<script setup lang="ts" name="ResetPwd">
 import { ref, onBeforeMount } from 'vue'
 import { ElMessage } from 'element-plus'
 import api from '@/services/index.ts'
 import router from '@/router/index.ts'
 import { Validator } from '@/util/Validator'
 
-const formRef = ref()
+let formRef = ref()
 
-const registerRequest = ref({
+let resetPwdRequest = ref({
    email: '',
    captcha: '',
    code: '',
    password: ''
 })
 
-const captchaImage = ref('')
-const countdown = ref(0)
+let captchaImage = ref('')
+let countdown = ref(0)
 let timer: number | null = null
 
 // 表单校验规则
@@ -69,11 +71,10 @@ const rules = {
    password: [{ required: true, message: '请输入密码', trigger: 'blur' }]
 }
 
-
 // methods
 async function sendCode() {
-   let email: string = registerRequest.value.email
-   let captcha: string = registerRequest.value.captcha
+   let email: string = resetPwdRequest.value.email
+   let captcha: string = resetPwdRequest.value.captcha
 
    if (!email && !captcha) {
       ElMessage.warning('请输入邮箱和图形验证码')
@@ -99,7 +100,8 @@ async function sendCode() {
    try {
       let sendCodeRequeset = {
          to: email,
-         captcha: captcha
+         code: captcha,
+         captchaKeyType: 'resetPassword',
       }
 
       let res = await api.post('/system/sendCode', sendCodeRequeset)
@@ -107,7 +109,7 @@ async function sendCode() {
       if (resData.code === 200) {
          ElMessage.success('邮箱验证码发送成功')
       } else {
-         ElMessage.error("邮箱验证码发送失败")
+         ElMessage.error(resData.msg);
       }
 
       countdown.value = 60
@@ -120,36 +122,40 @@ async function sendCode() {
       }, 1000)
    } catch (err) {
       getCaptcha()
-      throw new Error("系统异常")
+      throw new Error("系统异常，请稍后重试")
    }
 }
 
-async function register() {
-  try {
-    let isValid = await formRef.value.validate();
-    if (!isValid) return;
 
-    let res = await api.post('/system/register', registerRequest.value);
-    let resData = res.data;
 
-    if (resData.code !== 200) {
-      ElMessage.error(resData.msg);
+function resetPwd() {
+   try {
+      let isValid = formRef.value.validate();
+      if (!isValid) return;
+
+      api.post('/system/resetPwd', resetPwdRequest.value).then((res) => {
+         let resData = res.data;
+
+         if (resData.code !== 200) {
+            ElMessage.error(resData.msg);
+            getCaptcha();
+            return;
+         }
+
+         ElMessage.success('重置成功，即将跳转登录页')
+         router.push('/');
+      })
+   } catch (error) {
+      ElMessage.error('重置失败，请检查输入或稍后重试')
       getCaptcha();
-      return;
-    }
-
-    ElMessage.success('注册成功，即将跳转登录页');
-    router.push('/');
-  } catch (error) {
-    ElMessage.error('请求失败，请检查网络或稍后重试');
-    getCaptcha();
-    console.error('注册异常：', error);
-  }
+      console.error('重置异常：', error);
+   }
 }
+
 
 async function getCaptcha() {
    try {
-      const res = await api.get('/system/captcha?captchaKeyType=register', { responseType: 'blob' })
+      const res = await api.get('/system/captcha?captchaKeyType=resetPassword', { responseType: 'blob' })
       const blob = new Blob([res.data], { type: 'image/png' })
       captchaImage.value = URL.createObjectURL(blob)
    } catch (err) {
@@ -165,7 +171,7 @@ onBeforeMount(() => {
 </script>
 
 <style scoped>
-.register-wrapper {
+.reset-wrapper {
    width: 35%;
 }
 </style>

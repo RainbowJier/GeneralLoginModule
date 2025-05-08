@@ -12,4 +12,6 @@ public interface SysUserManager {
     SysUser selectOne(String email);
 
     List<SysUser> selectAllUsers();
+
+    int update(SysUser sysUser);
 }

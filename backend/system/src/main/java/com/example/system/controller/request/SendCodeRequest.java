@@ -16,5 +16,9 @@ public class SendCodeRequest {
      */
     private String to;
 
+
+    /**
+     * login/register/resetPwd
+     */
     private String captchaKeyType;
 }

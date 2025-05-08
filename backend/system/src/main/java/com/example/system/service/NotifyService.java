@@ -6,10 +6,10 @@ import com.example.common.util.JsonData;
 import javax.mail.MessagingException;
 
 public interface NotifyService {
-    JsonData sendCode(SendCode userRegister, String to) throws MessagingException;
+    JsonData sendCode(String keyType, String to) throws MessagingException;
 
 
-    boolean checkCode(SendCode sendCodeEnum, String to, String code);
+    boolean checkCode(String keyType, String to, String code);
 
 
 }
