@@ -383,12 +383,12 @@ public class LimitFlowAop {
 3. 用户输入验证码 + 新密码； 
 4. 系统校验验证码，通过后修改密码； 
 5. 限制：Redis 限制修改的次数，同一个邮箱一天只能修改 N 次。
-   6. key = `limit_flow:reset_pwd:邮箱`
+   6. key = `limit_reset_password:[邮箱]`
    7. value = `次数`
    8. 设置过期时间为当天过期
 
 ##### 相关代码
-1修改代码接口：
+1. 修改代码接口：`com/example/system/controller/LoginController--resetPwd()`
 
 
 
