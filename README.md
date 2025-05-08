@@ -29,6 +29,8 @@
             * [实现思路](#实现思路)
             * [代码实现](#代码实现)
       + [找回密码](#找回密码)
+      + [记住我模式](#记住我模式)
+      + [Token续约](#Token续约)
    * [参考资料](#参考资料)
 
 
@@ -392,6 +394,46 @@ public class LimitFlowAop {
 ##### 相关代码
 1. 修改代码接口：`com/example/system/controller/LoginController--resetPwd()`
 
+
+
+### 记住我模式
+
+一般网站界面都有一个“记住我”的按钮，“记住我”功能主要是在用户勾选此选项后，关闭浏览器后仍能保持登录状态一段时间（如7天、14天等），避免频繁登录。
+
+<img src="images/login/login_1.png" width="400">
+
+#### 核心思路
+##### Token 双模式管理
+1. ✅ 短期 Token：普通登录的 Token，有效期短（如2小时）。
+2. ✅ 长期 Token（Remember Me）：用户勾选“记住我”后，Token 有效期延长（如7天、30天）。
+
+##### 前端处理
+勾选“记住我”后，登录请求中携带该标志：
+```json
+{
+  "username": "user",
+  "password": "pass",
+  "rememberMe": true
+}
+```
+
+##### 后端处理
+后端接收请求，根据`rememberMe`字段，判断设置 Token 的有效期
+```java
+if (rememberMe) {
+    // 7天
+    StpUtil.login(userId, SaLoginConfig.setTimeout(60 * 60 * 24 * 7)); 
+} else {
+    StpUtil.login(userId); // 默认时间
+}
+```
+
+
+#### 🔐 安全建议：
+1. 避免无限期“记住我”，建议最长 30 天。 
+2. 设置 Token 黑名单，防止被盗后滥用。 
+3. 对敏感操作仍可二次验证（如支付、修改密码等）。 
+4. 防范 XSS、CSRF、Cookie 劫持等常见攻击。
 
 
 

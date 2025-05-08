@@ -14,14 +14,14 @@
             </el-form-item>
 
             <el-form-item>
-               <el-button style="position: absolute;  right: 10px; margin-top: 10px; color: gray;" type="text">
+               <el-checkbox v-model="userInfo.rememberMe">记住我</el-checkbox>
+               <el-button style="position: absolute;  right: 0px; color: gray;" type="text">
                   <RouterLink to="/resetPwd">忘记密码</RouterLink>
                </el-button>
             </el-form-item>
 
             <el-form-item>
                <el-button type="primary" @click="login">登录</el-button>
-
                <el-button style="position: absolute;  right: 10px; margin-top: 10px;" type="text">
                   <RouterLink to="/register">注册</RouterLink>
                </el-button>
@@ -33,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref,onBeforeMount } from 'vue'
+import { ref, onBeforeMount } from 'vue'
 import { ElMessage } from 'element-plus'
 import { RouterLink } from 'vue-router'
 import Api from '@/services/index.ts'
@@ -42,7 +42,8 @@ import { Validator } from '@/util/Validator'
 
 let userInfo = ref({
    email: '',
-   password: ''
+   password: '',
+   rememberMe: false
 })
 
 function login() {
@@ -75,7 +76,7 @@ function login() {
          }
       })
    } catch (error) {
-      throw new Error("系统异常")
+      throw new Error("系统异常");
    }
 }
 

@@ -1,6 +1,7 @@
 package com.example.system.service.impl;
 
 
+import cn.dev33.satoken.stp.SaLoginConfig;
 import cn.dev33.satoken.stp.SaTokenInfo;
 import cn.dev33.satoken.stp.StpUtil;
 import com.example.common.constant.RedisKey;
@@ -22,6 +23,7 @@ import com.fasterxml.jackson.databind.util.BeanUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.digest.Md5Crypt;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -44,6 +46,9 @@ public class SysUserServiceImpl implements SysUserService {
 
     @Resource
     private StringRedisTemplate stringRedisTemplate;
+
+    @Value("${token.expiresTime:604800}")
+    private Long tokenRememberExpire;
 
     @Override
     @Transactional
@@ -101,7 +106,13 @@ public class SysUserServiceImpl implements SysUserService {
 
         // Login success.
         Long userId = sysUser.getId();
-        StpUtil.login(userId);
+
+        boolean rememberMe = loginRequest.getRememberMe();
+        if(rememberMe){
+            StpUtil.login(userId, tokenRememberExpire);
+        }else{
+            StpUtil.login(userId);
+        }
 
         // Generate token.
         SaTokenInfo tokenInfo = StpUtil.getTokenInfo();

@@ -18,9 +18,6 @@ Api.interceptors.request.use(
   (config) => {
     config.headers["Authorization"] = getToken();
     return config;
-  },
-  (error) => {
-    errorHandler(error);
   }
 );
 
@@ -38,15 +35,7 @@ Api.interceptors.response.use(
     }
 
     return response;
-  },
-  (error) => {
-    errorHandler(error);
   }
 );
-
-function errorHandler(error: any) {
-  ElMessage.error("系统异常，请联系管理员");
-  return Promise.reject(error);
-}
 
 export default Api;
