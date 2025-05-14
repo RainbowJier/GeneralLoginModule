@@ -2,7 +2,6 @@ package com.example.system.manager.Impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
-import com.example.common.util.JsonData;
 import com.example.system.manager.SysUserManager;
 import com.example.system.mapper.SysUserMapper;
 import com.example.system.model.entity.SysUser;

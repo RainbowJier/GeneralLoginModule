@@ -1,14 +1,10 @@
 package com.example.common.interceptor;
 
 import cn.dev33.satoken.stp.StpUtil;
-import com.example.common.entity.LoginUser;
 import com.example.common.enums.BizCode;
-import com.example.common.util.JWTUtil;
 import com.example.common.util.CommonUtil;
 import com.example.common.util.JsonData;
-import io.jsonwebtoken.Claims;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.platform.commons.util.StringUtils;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -43,6 +39,8 @@ public class LoginInterceptor implements HandlerInterceptor {
 
         String token = request.getHeader("Authorization");
         String loginId = (String) StpUtil.getLoginIdByToken(token);
+
+        // todo:token双重续约
 
         if(loginId == null){
             CommonUtil.sendJsonMessage(response, JsonData.buildError(BizCode.UNAUTHORIZED));

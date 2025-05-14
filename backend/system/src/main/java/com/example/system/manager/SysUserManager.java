@@ -1,6 +1,5 @@
 package com.example.system.manager;
 
-import com.example.common.util.JsonData;
 import com.example.system.model.entity.SysUser;
 
 import java.util.List;

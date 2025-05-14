@@ -32,40 +32,25 @@
         </dependency>
 
 
-        <!--        SpringCloud-->
-        <!--限流持久化到nacos-->
+        <!-- SpringCloud-->
+        <!-- nacos 服务注册与发现 -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
 
-
-        <!--Hoxton.M2版本之后不再使⽤Ribbon⽽是使⽤spring-cloud-loadbalancer，所以不引⼊spring-cloud-loadbalancer会报
-        错，所以加⼊spring-cloud-loadbalancer依赖 并且在nacos中排除ribbon依赖，不然loadbalancer⽆效 -->
-<!--        <dependency>-->
-<!--            <groupId>com.alibaba.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>-->
-<!--            <exclusions>-->
-<!--                <exclusion>-->
-<!--                    <groupId>org.springframework.cloud</groupId>-->
-<!--                    <artifactId>spring-cloudstarter-netflix-ribbon</artifactId>-->
-<!--                </exclusion>-->
-<!--            </exclusions>-->
-<!--        </dependency>-->
-
-        <!--        <dependency>-->
-        <!--            <groupId>org.springframework.cloud</groupId>-->
-        <!--            <artifactId>spring-cloud-starter-loadbalancer</artifactId>-->
-        <!--            <version>3.0.4</version>-->
-        <!--        </dependency>-->
-
-        <!--坑：spring-cloud-dependencies 2020.0.0 默认不在加载bootstrap配置文件-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.springframework.cloud</groupId>-->
-        <!--            <artifactId>spring-cloud-starter-bootstrap</artifactId>-->
-        <!--        </dependency>-->
+        <!-- nacos 配置中心 -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
 
         <!--Feign远程调⽤-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.springframework.cloud</groupId>-->
-        <!--            <artifactId>spring-cloud-starter-openfeign</artifactId>-->
-        <!--        </dependency>-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+
 
         <!--限流依赖-->
         <!--        <dependency>-->
@@ -155,7 +140,6 @@
         </dependency>
 
 
-
         <!--验证码-->
         <dependency>
             <groupId>com.baomidou</groupId>
@@ -171,13 +155,6 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-        </dependency>
-
-
-        <!-- Sa-Token 权限认证，在线文档：https://sa-token.cc -->
-        <dependency>
-            <groupId>cn.dev33</groupId>
-            <artifactId>sa-token-spring-boot-starter</artifactId>
         </dependency>
 
         <!--redisson分布式锁-->
@@ -207,6 +184,12 @@
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt</artifactId>
+        </dependency>
+
+        <!-- Sa-Token 权限认证，在线文档：https://sa-token.cc -->
+        <dependency>
+            <groupId>cn.dev33</groupId>
+            <artifactId>sa-token-spring-boot-starter</artifactId>
         </dependency>
 
         <!--单元测试-->

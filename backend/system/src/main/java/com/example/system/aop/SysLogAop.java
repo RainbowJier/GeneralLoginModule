@@ -1,7 +1,6 @@
 package com.example.system.aop;
 
 import com.alibaba.fastjson.JSON;
-import com.example.common.util.JsonUtil;
 import com.example.system.aop.annotation.SysLogAnno;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -15,7 +14,6 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.HashMap;
 
 @Component
 @Aspect

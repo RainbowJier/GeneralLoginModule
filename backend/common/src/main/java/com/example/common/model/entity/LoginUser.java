@@ -1,11 +1,9 @@
-package com.example.common.entity;
+package com.example.common.model.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.Date;
 
 /**
  * @Author: RainbowJier

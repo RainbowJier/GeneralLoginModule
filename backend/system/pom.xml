@@ -24,7 +24,6 @@
 
 
     <build>
-        <finalName>dcloud-account</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

@@ -5,20 +5,54 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a1ead5d-e6c9-43e0-b808-09b27100863b" name="Changes" comment="New(system): optimize login logic.">
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app/AppApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/test/java/com/example/app/AppApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/target/classes/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/target/classes/com/example/app/AppApplication.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/com/example/gateway/GatewayApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/com/example/gateway/config/CorsGlobalConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/resources/application.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/src/test/java/com/example/gateway/GatewayApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/target/classes/application.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/target/classes/com/example/gateway/GatewayApplication.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/target/classes/com/example/gateway/config/CorsGlobalConfiguration.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/log/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/log/src/main/java/com/example/log/LogApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/log/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/log/src/test/java/com/example/log/LogApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/log/target/classes/com/example/log/LogApplication.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/system/src/main/resources/META-INF/additional-spring-configuration-metadata.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../documents/system/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/281f116c-c9e8-445b-b847-bcca1d79e8cd.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/281f116c-c9e8-445b-b847-bcca1d79e8cd.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/example/common/constant/RedisKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/example/common/constant/RedisKey.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/target/classes/com/example/common/constant/RedisKey.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/example/common/constant/RedisKey.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/example/common/entity/LoginUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/example/common/entity/LoginUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/example/common/interceptor/LoginInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/example/common/interceptor/LoginInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/example/common/util/CommonUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/example/common/util/CommonUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/example/common/util/JWTUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/example/common/util/JWTUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/system/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/src/main/java/com/example/system/SystemApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/system/src/main/java/com/example/system/SystemApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/src/main/java/com/example/system/aop/SysLogAop.java" beforeDir="false" afterPath="$PROJECT_DIR$/system/src/main/java/com/example/system/aop/SysLogAop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/system/src/main/java/com/example/system/controller/NotifyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/system/src/main/java/com/example/system/controller/NotifyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/system/src/main/java/com/example/system/controller/request/SendCodeRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/system/src/main/java/com/example/system/controller/request/SendCodeRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/src/main/java/com/example/system/manager/Impl/SysUserManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/system/src/main/java/com/example/system/manager/Impl/SysUserManagerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/src/main/java/com/example/system/manager/SysUserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/system/src/main/java/com/example/system/manager/SysUserManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/src/main/java/com/example/system/model/dto/SysUserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/system/src/main/java/com/example/system/model/dto/SysUserDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/src/main/java/com/example/system/model/entity/SysUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/system/src/main/java/com/example/system/model/entity/SysUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/src/main/java/com/example/system/service/NotifyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/system/src/main/java/com/example/system/service/NotifyService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/src/main/java/com/example/system/service/impl/NotifyServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/system/src/main/java/com/example/system/service/impl/NotifyServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/system/src/main/java/com/example/system/service/impl/SysUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/system/src/main/java/com/example/system/service/impl/SysUserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/components.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/components.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/index/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/index/Login.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/index/Register.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/index/Register.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/router/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/system/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,53 +92,57 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JUnit.AccountApplicationTests.contextLoads.executor&quot;: &quot;Run&quot;,
-    &quot;Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.backend [clean].executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;Spring Boot.AccountApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.FrameApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.SystemApplication.executor&quot;: &quot;Run&quot;,
-    &quot;com.dong.plugin.component.SettingConsoleTools$DonateAnAction&quot;: &quot;true&quot;,
-    &quot;com.dong.plugin.gui.FormatDialog&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Projects/GeneralLoginModule/backend&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;项目&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15527344&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;File.Encoding&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.AccountApplicationTests.contextLoads.executor": "Run",
+    "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
+    "Maven.backend [clean].executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "660",
+    "RequestMappingsPanelWidth1": "660",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.AccountApplication.executor": "Run",
+    "Spring Boot.AppApplication.executor": "Run",
+    "Spring Boot.FrameApplication.executor": "Run",
+    "Spring Boot.GatewayApplication.executor": "Run",
+    "Spring Boot.LogApplication.executor": "Run",
+    "Spring Boot.SystemApplication.executor": "Run",
+    "com.dong.plugin.component.SettingConsoleTools$DonateAnAction": "true",
+    "com.dong.plugin.gui.FormatDialog": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/Projects/GeneralLoginModule/backend/log/src/main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "模块",
+    "project.structure.proportion": "0.15527344",
+    "project.structure.side.proportion": "0.2",
+    "run.configurations.included.in.services": "true",
+    "settings.editor.selected.configurable": "File.Encoding",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Projects\GeneralLoginModule\backend\log\src\main" />
+      <recent name="D:\Projects\GeneralLoginModule\backend\gateway\src\main" />
+      <recent name="D:\Projects\GeneralLoginModule\backend\app\src\main" />
       <recent name="D:\Projects\GeneralLoginModule\backend\dcloud-account\src\main\java\com\example\dcloud_account\service\impl" />
       <recent name="D:\Projects\GeneralLoginModule\backend\dcloud-account\src\main\java\com\example\dcloud_account\service" />
-      <recent name="D:\Projects\GeneralLoginModule\backend\dcloud-account\src\main\java\com\example\dcloud_account\controller\request" />
-      <recent name="D:\Projects\GeneralLoginModule\backend\dcloud-account\src\main\java\com\example\dcloud_account\controller" />
-      <recent name="D:\Projects\GeneralLoginModule\backend\dcloud-account\src\main\java\com\example\dcloud_account\mapper" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Projects\GeneralLoginModule\backend\frame\src\main\java\com\example\frame" />
@@ -118,7 +156,7 @@
       <recent name="com.example.system.service.impl" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.SystemApplication">
+  <component name="RunManager" selected="Spring Boot.LogApplication">
     <configuration name="AccountApplicationTests.contextLoads" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="system" />
       <extension name="coverage">
@@ -135,9 +173,30 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="AppApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="app" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.app.AppApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="FrameApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="frame" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.frame.FrameApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="gateway" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.gateway.GatewayApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LogApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="log" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.log.LogApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -204,6 +263,8 @@
       <workItem from="1746520310091" duration="624000" />
       <workItem from="1746520954151" duration="876000" />
       <workItem from="1746581010156" duration="6000" />
+      <workItem from="1747124202297" duration="4537000" />
+      <workItem from="1747182899959" duration="2857000" />
     </task>
     <task id="LOCAL-00001" summary="新增：新增注册模块（待完善）">
       <option name="closed" value="true" />

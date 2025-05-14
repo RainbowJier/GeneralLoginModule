@@ -1,0 +1,60 @@
+server:
+  port: 8000
+
+spring:
+  application:
+    name: gateway-server
+  cloud:
+    # Nacos configuration.
+    nacos:
+      discovery:
+        enabled: true
+        server-addr: 123.249.98.26:8848
+        username: nacos
+        password: nacos
+        namespace: dev
+    # Nacos registration center.
+
+    # Route Rule.
+    gateway:
+      routes:
+        - id: system-server
+          # lb: this means the request should be forwarded to the service named system-server using loadbalancer.
+          # system-server: this is a service registered in the Nacos.
+          # Via a service discovery mechanism like Nacos, Eureka, etc.
+          uri: lb://system-server
+          order: 1
+          predicates:
+            - Path=/general/system/*
+          filters:
+            - StripPrefix=1
+
+        - id: app-server
+          uri: lb://app-server
+          order: 2
+          predicates:
+            - Path=/general/app/**
+          filters:
+            - StripPrefix=1
+
+        - id: log-server
+          uri: lb://log-server
+          order: 3
+          predicates:
+            - Path=/general/log/**
+          filters:
+            - StripPrefix=1
+
+##################
+# Login Verification.
+##################
+security:
+  ignored-urls:
+    - /general/system/register
+    - /general/system/login
+    - /general/system/captcha
+    - /general/system/sendCode
+    - /general/system/resetPwd
+  intercepted-urls:
+    - /general/**
+

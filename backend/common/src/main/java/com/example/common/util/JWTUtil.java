@@ -1,11 +1,10 @@
 package com.example.common.util;
 
-import com.example.common.entity.LoginUser;
+import com.example.common.model.entity.LoginUser;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
 
 import java.util.Date;
 

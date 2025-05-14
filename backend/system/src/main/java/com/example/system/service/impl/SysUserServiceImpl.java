@@ -1,11 +1,10 @@
 package com.example.system.service.impl;
 
 
-import cn.dev33.satoken.stp.SaLoginConfig;
 import cn.dev33.satoken.stp.SaTokenInfo;
 import cn.dev33.satoken.stp.StpUtil;
 import com.example.common.constant.RedisKey;
-import com.example.common.entity.LoginUser;
+import com.example.common.model.entity.LoginUser;
 import com.example.common.enums.BizCode;
 import com.example.common.enums.SendCode;
 import com.example.common.exception.BizException;
@@ -19,7 +18,6 @@ import com.example.system.model.dto.SysUserDTO;
 import com.example.system.model.entity.SysUser;
 import com.example.system.service.NotifyService;
 import com.example.system.service.SysUserService;
-import com.fasterxml.jackson.databind.util.BeanUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.digest.Md5Crypt;
 import org.springframework.beans.BeanUtils;
@@ -32,7 +30,6 @@ import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 @Slf4j

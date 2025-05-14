@@ -2,7 +2,6 @@ package com.example.system.service.impl;
 
 import com.example.common.constant.RedisKey;
 import com.example.common.enums.BizCode;
-import com.example.common.enums.SendCode;
 import com.example.common.util.CheckUtil;
 import com.example.common.util.CommonUtil;
 import com.example.common.util.JsonData;

@@ -14,7 +14,6 @@ import com.example.system.controller.request.SendCodeRequest;
 import com.example.system.service.NotifyService;
 import com.google.code.kaptcha.Producer;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.kafka.common.network.Send;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
