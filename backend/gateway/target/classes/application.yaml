@@ -17,13 +17,16 @@ spring:
 
     # Route Rule.
     gateway:
+      # Enable the discovery client.
+      discovery:
+        locator:
+          enabled: true
       routes:
         - id: system-server
           # lb: this means the request should be forwarded to the service named system-server using loadbalancer.
           # system-server: this is a service registered in the Nacos.
           # Via a service discovery mechanism like Nacos, Eureka, etc.
           uri: lb://system-server
-          order: 1
           predicates:
             - Path=/general/system/*
           filters:
@@ -31,7 +34,6 @@ spring:
 
         - id: app-server
           uri: lb://app-server
-          order: 2
           predicates:
             - Path=/general/app/**
           filters:
@@ -39,7 +41,6 @@ spring:
 
         - id: log-server
           uri: lb://log-server
-          order: 3
           predicates:
             - Path=/general/log/**
           filters:

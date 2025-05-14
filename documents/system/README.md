@@ -7,9 +7,6 @@
    * [项目进度](#项目进度)
       + [✅ over](#over)
       + [🎯 Todo List](#todo-list)
-   * [技术栈](#技术栈)
-      + [前端](#前端)
-      + [后端](#后端)
    * [功能介绍](#功能介绍)
       + [注册](#注册)
          - [图形验证码](#图形验证码)
@@ -42,37 +39,15 @@
 ### ✅over
 1. 登录功能 
 2. 注册功能
+3. 找回密码
 
 ### 🎯Todo List
-1. 找回密码
-
-## 技术栈
-### 前端
-| 技术栈              | 描述                                         |
-|------------------|--------------------------------------------|
-| **Vue 3**        | 现代化渐进式前端框架，支持 Composition API，性能更优，代码更清晰。  |
-| **Vue Router**   | Vue 官方的路由管理库，支持动态路由、嵌套路由、懒加载等功能。           |
-| **Pinia**        | Vue 3 官方推荐的状态管理库，替代 Vuex，类型推导更好，使用更简单。     |
-| **Element Plus** | 基于 Vue 3 的组件库（Element UI 的升级版），提供丰富的 UI 组件。 |
-| **TypeScript**   | JavaScript 的超集，提供类型系统和开发时错误提示，提升代码健壮性与可维护性。 |
-| **Axios**        | 基于Promise的HTTP库，用于前端与后端的数据交互。              |
-| **Nodejs-20**    |                                            |
-
-### 后端
-| 技术栈           | 描述                                                   |
-| ------------- | ---------------------------------------------------- |
-| **Spring Boot 3** | 基于 Spring Framework 的快速开发框架，支持最新 Jakarta EE 标准和原生支持 AOT。 |
-| **JDK 17**    | Java LTS（长期支持）版本，提供更强的性能、语法优化和安全特性。                  |
-| **Redis**     | 高性能内存数据库，常用于缓存、限流、分布式锁等场景。                           |
-| **MySQL**     | 主流关系型数据库，适用于大多数业务场景。                                 |
-| **MyBatis-Plus** | MyBatis 的增强版，简化了 CRUD 操作，支持分页、条件构造器等功能。              |
-| **Sa-Token**  | 轻量级权限认证框架，支持登录、权限、单点登录、踢人下线、Token 续签等功能。             |
-
+1. token 续约
 
 ## 功能介绍
 ### 注册
 
-<img src="../../images/register/register.png" width="400" alt="register">
+<img src="../../images/system/register/register.png" width="400" alt="register">
 
 首先，我们设计了“用户信息表”，包含了用户的账号、密码、邮箱、邮箱号等字段。
 
@@ -117,7 +92,7 @@ Kaptcha 框架是由 Google 开源的一款高度可定制的验证码生成解�
 
 ##### 功能流程图
 
-<img src="../../images/register/captcha_function.png" width="400" alt="register">
+<img src="../../images/system/register/captcha_function.png" width="400" alt="register">
 
 1. 用户进入注册页面，获取图形验证码
 2. 保存验证码到 Redis
@@ -128,7 +103,7 @@ Kaptcha 框架是由 Google 开源的一款高度可定制的验证码生成解�
 1. 使用 ip 地址：让后台正确识别验证码发送到哪个浏览器。
 2. 浏览器指纹：有些地方的小区或者学校，出口 ip 是共用的，容易造成验证码错发问题。
 
-<img src="../../images/register/register_2.png" width="400" alt="register">
+<img src="../../images/system/register/register_2.png" width="400" alt="register">
 
 3. 使用`用户IP + 浏览器指纹`，虽然也会又问题，但是很大程度上避免了冲突
 
@@ -146,7 +121,7 @@ Kaptcha 框架是由 Google 开源的一款高度可定制的验证码生成解�
 
 ##### 架构图
 
-<img src="../../images/register/register_email.png" width="400" alt="register">
+<img src="../../images/system/register/register_email.png" width="400" alt="register">
 
 发送验证码”功能使用异步处理机制，实现消息异步发送，快速响应用户，工作流程如下：
 1. 前端：用户发送请求
@@ -155,14 +130,14 @@ Kaptcha 框架是由 Google 开源的一款高度可定制的验证码生成解�
 
 **异步机制** :解决了在高并发场景时，同一时刻大量用户请求，导致请求部分用户请求超时异常，如下图所示：
 
-<img src="../../images/register/register_email_2.png" width="905" alt="register">
+<img src="../../images/system/register/register_email_2.png" width="905" alt="register">
 
 1. **消息队列阻塞**：若在短时间内有大量用户同时发起请求，而其中某个请求的处理时间较长，这将导致其他请求在队列中积压，系统性能下降。
 2. **请求超时**：一旦请求堆积的数量超过了服务程序能够处理的等待时间限制，系统便会抛出“connection timed out”的错误，从而影响用户体验，造成服务质量的下降。
 
 ##### 功能流程图
 
-![img.png](../../images/register/register_email_3.png)
+![img.png](../../images/system/register/register_email_3.png)
 
 1. 用户输入图形验证码，点击获取邮箱验证码按钮，发送请求。
 2. 前端限制用户 60 秒只能发送一次请求。
@@ -197,7 +172,7 @@ Kaptcha 框架是由 Google 开源的一款高度可定制的验证码生成解�
 ---
 
 ### 登录
-<img src="../../images/login/login.png" width="400" alt="register">
+<img src="../../images/system/login/login.png" width="400" alt="register">
 
 #### 邮箱密码登录
 1. **发送请求**：当前端提交请求时，请求体中以 JSON 形式提交账号、密码、验证码这几个参数。
@@ -256,28 +231,28 @@ Kaptcha 框架是由 Google 开源的一款高度可定制的验证码生成解�
 3. `score = 时间戳`
 4. `value = 时间戳`
 
-<img src="../../images/limitStream/limitStream.png" width="400" alt="register">
+<img src="../../images/system/limitStream/limitStream.png" width="400" alt="register">
 
 ##### 实现思路
 假设，现在接口只允许同一个用户 **3 分钟**内只能发送 3 次邮箱验证码。
 
 1. 记录窗口的请求数量
 
-<img src="../../images/limitStream/limitStream_1.png" width="400" alt="register">
+<img src="../../images/system/limitStream/limitStream_1.png" width="400" alt="register">
 
 2. 此时，计算`“当前时间”- “3 分钟”内请求的次数 = 2 次 < 3 次`，所以可以发送新请求。
 
-<img src="../../images/limitStream/limitStream_2.png" width="400" alt="register">
+<img src="../../images/system/limitStream/limitStream_2.png" width="400" alt="register">
 
 3. 如果，此时在 “3 分钟”时，又新增了请求，由于 3 分钟内请求次数已经超过了 3 次，拒绝请求。
 
-<img src="../../images/limitStream/limitStream_3.png" width="400" alt="register">
+<img src="../../images/system/limitStream/limitStream_3.png" width="400" alt="register">
 
 4. 此时，等待了 1 分钟后，再次发送请求
    1. 首先，剔除窗口外的请求（00 分钟）
    2. 计算，`“当前时间”- “3 分钟”内请求的次数 = 2 次`，新增请求。
 
-<img src="../../images/limitStream/limitStream_4.png" width="400" alt="register">
+<img src="../../images/system/limitStream/limitStream_4.png" width="400" alt="register">
 
 后续的业务，就时不同场景中，根据不同的需求，进行修改校验就行了，比如 5 分钟限流 3 次，10 分钟限流 8 次等。
 
@@ -287,7 +262,7 @@ Kaptcha 框架是由 Google 开源的一款高度可定制的验证码生成解�
 1. 基于 Redis 的有序集合 Zset 实现滑动窗口限流（List 集合可以实现滑动窗口）。
 2. 目标对象时接口，此时我们就可以使用 AOP 拦截请求，达到限流的目的。
 
-<img src="../../images/limitStream/limitStream_function.png" width="200" alt="register">
+<img src="../../images/system/limitStream/limitStream_function.png" width="200" alt="register">
 
 1. 统计接口的请求次数
 ```java
@@ -379,7 +354,7 @@ public class LimitFlowAop {
 ```
 
 ### 找回密码
-<img src="../../images/resetPwd/resetPwd.png" width="400">
+<img src="../../images/system/resetPwd/resetPwd.png" width="400">
 
 ##### 开发思路
 1. 用户点击“忘记密码”，输入邮箱； 
@@ -401,7 +376,7 @@ public class LimitFlowAop {
 一般网站界面都有一个“记住我”的按钮，“记住我”功能主要是在用户，
 勾选此选项后，关闭浏览器后仍能保持登录状态一段时间（如7天、14天等），避免频繁登录。
 
-<img src="../../images/login/login_1.png" width="400">
+<img src="../../images/system/login/login_1.png" width="400">
 
 #### 核心思路
 ##### Token 双模式管理
