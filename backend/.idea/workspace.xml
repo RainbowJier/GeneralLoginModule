@@ -4,36 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a1ead5d-e6c9-43e0-b808-09b27100863b" name="Changes" comment="feat(gateway/app/log): add new modules and config">
-      <change afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/app/controller/AppController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/log/src/main/java/com/example/log/controller/LogController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../images/yuque_diagram.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ApifoxUploaderProjectSetting.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ApifoxUploaderProjectSetting.xml" afterDir="false" />
+    <list default="true" id="9a1ead5d-e6c9-43e0-b808-09b27100863b" name="Changes" comment="fix(gateway/app/log): 修复gateway无法跳转服务的问题&#10;&#10;由于springcloud2020弃用了Ribbon，因此Alibaba在2021版本nacos中删除了Ribbon的jar包，因此无法通过lb路由到指定微服务，出现了503情况。&#10;所以只需要引入springcloud loadbalancer包即可。">
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/com/example/gateway/filter/AuthFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/com/example/gateway/model/SecurityProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/example/common/interceptor/LoginInterceptor.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/application.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gateway/target/classes/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/target/classes/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/system/src/main/resources/META-INF/additional-spring-configuration-metadata.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../documents/system/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../documents/system/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../drawio/test" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../images/limitStream/limitStream.png" beforeDir="false" afterPath="$PROJECT_DIR$/../images/system/limitStream/limitStream.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../images/limitStream/limitStream_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/../images/system/limitStream/limitStream_1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../images/limitStream/limitStream_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/../images/system/limitStream/limitStream_2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../images/limitStream/limitStream_3.png" beforeDir="false" afterPath="$PROJECT_DIR$/../images/system/limitStream/limitStream_3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../images/limitStream/limitStream_4.png" beforeDir="false" afterPath="$PROJECT_DIR$/../images/system/limitStream/limitStream_4.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../images/limitStream/limitStream_function.png" beforeDir="false" afterPath="$PROJECT_DIR$/../images/system/limitStream/limitStream_function.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../images/login/login.png" beforeDir="false" afterPath="$PROJECT_DIR$/../images/system/login/login.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../images/login/login_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/../images/system/login/login_1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../images/register/captcha_function.png" beforeDir="false" afterPath="$PROJECT_DIR$/../images/system/register/captcha_function.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../images/register/register.png" beforeDir="false" afterPath="$PROJECT_DIR$/../images/system/register/register.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../images/register/register_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/../images/system/register/register_2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../images/register/register_email.png" beforeDir="false" afterPath="$PROJECT_DIR$/../images/system/register/register_email.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../images/register/register_email_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/../images/system/register/register_email_2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../images/register/register_email_3.png" beforeDir="false" afterPath="$PROJECT_DIR$/../images/system/register/register_email_3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../images/resetPwd/resetPwd.png" beforeDir="false" afterPath="$PROJECT_DIR$/../images/system/resetPwd/resetPwd.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/src/main/java/com/example/system/config/InterceptorConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/src/main/java/com/example/system/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/system/src/main/java/com/example/system/controller/LoginController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,47 +55,47 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JUnit.AccountApplicationTests.contextLoads.executor&quot;: &quot;Run&quot;,
-    &quot;Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.backend [clean].executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;Spring Boot.AccountApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.AppApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.FrameApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.GatewayApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.LogApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.SystemApplication.executor&quot;: &quot;Run&quot;,
-    &quot;com.dong.plugin.component.SettingConsoleTools$DonateAnAction&quot;: &quot;true&quot;,
-    &quot;com.dong.plugin.gui.FormatDialog&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Projects/GeneralLoginModule/backend/log/src/main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;模块&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15527344&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.itangcent.idea.plugin.configurable.AccountConfigurable.apifox&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.AccountApplicationTests.contextLoads.executor": "Run",
+    "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
+    "Maven.backend [clean].executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.AccountApplication.executor": "Run",
+    "Spring Boot.AppApplication.executor": "Run",
+    "Spring Boot.FrameApplication.executor": "Run",
+    "Spring Boot.GatewayApplication.executor": "Run",
+    "Spring Boot.LogApplication.executor": "Run",
+    "Spring Boot.SystemApplication.executor": "Debug",
+    "com.dong.plugin.component.SettingConsoleTools$DonateAnAction": "true",
+    "com.dong.plugin.gui.FormatDialog": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/Projects/GeneralLoginModule/backend/log/src/main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "模块",
+    "project.structure.proportion": "0.15527344",
+    "project.structure.side.proportion": "0.2",
+    "run.configurations.included.in.services": "true",
+    "settings.editor.selected.configurable": "File.Encoding",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -137,7 +119,7 @@
       <recent name="com.example.system.config" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.GatewayApplication">
+  <component name="RunManager" selected="Spring Boot.SystemApplication">
     <configuration name="AccountApplicationTests.contextLoads" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="system" />
       <extension name="coverage">
@@ -249,7 +231,9 @@
       <workItem from="1747186718457" duration="1379000" />
       <workItem from="1747189787583" duration="2162000" />
       <workItem from="1747192094377" duration="885000" />
-      <workItem from="1747227514440" duration="793000" />
+      <workItem from="1747227514440" duration="1044000" />
+      <workItem from="1747267600560" duration="312000" />
+      <workItem from="1747309256479" duration="4382000" />
     </task>
     <task id="LOCAL-00001" summary="新增：新增注册模块（待完善）">
       <option name="closed" value="true" />
@@ -323,11 +307,30 @@
       <option name="project" value="LOCAL" />
       <updated>1747185851984</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="fix(gateway/app/log): 修复gateway无法跳转服务的问题&#10;&#10;由于springcloud2020弃用了Ribbon，因此Alibaba在2021版本nacos中删除了Ribbon的jar包，因此无法通过lb路由到指定微服务，出现了503情况。&#10;所以只需要引入springcloud loadbalancer包即可。">
+      <option name="closed" value="true" />
+      <created>1747228432675</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1747228432675</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="新增：新增注册模块（待完善）" />
@@ -339,7 +342,8 @@
     <MESSAGE value="New(system): cors config" />
     <MESSAGE value="New(system): optimize login logic." />
     <MESSAGE value="feat(gateway/app/log): add new modules and config" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(gateway/app/log): add new modules and config" />
+    <MESSAGE value="fix(gateway/app/log): 修复gateway无法跳转服务的问题&#10;&#10;由于springcloud2020弃用了Ribbon，因此Alibaba在2021版本nacos中删除了Ribbon的jar包，因此无法通过lb路由到指定微服务，出现了503情况。&#10;所以只需要引入springcloud loadbalancer包即可。" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix(gateway/app/log): 修复gateway无法跳转服务的问题&#10;&#10;由于springcloud2020弃用了Ribbon，因此Alibaba在2021版本nacos中删除了Ribbon的jar包，因此无法通过lb路由到指定微服务，出现了503情况。&#10;所以只需要引入springcloud loadbalancer包即可。" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -348,6 +352,11 @@
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/app/controller/AppController.java</url>
           <line>19</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/system/src/main/java/com/example/system/manager/Impl/SysUserManagerImpl.java</url>
+          <line>36</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -2,7 +2,6 @@ package com.example.system.controller;
 
 import cn.dev33.satoken.stp.StpUtil;
 import com.example.common.enums.OperationType;
-import com.example.common.interceptor.LoginInterceptor;
 import com.example.common.util.JsonData;
 import com.example.system.aop.annotation.SysLogAnno;
 import com.example.system.controller.request.LoginRequest;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 
 /**
@@ -27,6 +27,9 @@ import javax.annotation.Resource;
 public class LoginController {
     @Resource
     private SysUserService sysUserService;
+
+    @Resource
+    HttpServletRequest request;
 
     /**
      * Register
@@ -52,7 +55,7 @@ public class LoginController {
     @SysLogAnno(description = "Logout", operateType = OperationType.OTHER)
     @PostMapping("logout")
     public JsonData logout() {
-        Long userId = LoginInterceptor.threadLocal.get();
+        Long userId = Long.valueOf(request.getHeader("loginId"));
         StpUtil.logout(userId);
 
         return JsonData.buildSuccess("退出登录");

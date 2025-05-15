@@ -28,7 +28,7 @@ spring:
           # Via a service discovery mechanism like Nacos, Eureka, etc.
           uri: lb://system-server
           predicates:
-            - Path=/general/system/*
+            - Path=/general/system/**
           filters:
             - StripPrefix=1
 
@@ -59,3 +59,4 @@ security:
   intercepted-urls:
     - /general/**
 
+Authorization: eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY4MDU2NjUwOSwiaWF0IjoxNjgwNTYyNTA5LCJyb2xlcyI6WyJST0xFX0FETUlOIiwiUk

@@ -28,10 +28,6 @@
                     <groupId>com.baomidou</groupId>
                     <artifactId>kaptcha-spring-boot-starter</artifactId>
                 </exclusion>
-<!--                <exclusion>-->
-<!--                    <groupId>cn.dev33</groupId>-->
-<!--                    <artifactId>sa-token-spring-boot-starter</artifactId>-->
-<!--                </exclusion>-->
             </exclusions>
         </dependency>
 
