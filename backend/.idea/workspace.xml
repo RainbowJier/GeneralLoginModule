@@ -4,18 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a1ead5d-e6c9-43e0-b808-09b27100863b" name="Changes" comment="fix(gateway/app/log): 修复gateway无法跳转服务的问题&#10;&#10;由于springcloud2020弃用了Ribbon，因此Alibaba在2021版本nacos中删除了Ribbon的jar包，因此无法通过lb路由到指定微服务，出现了503情况。&#10;所以只需要引入springcloud loadbalancer包即可。">
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/com/example/gateway/filter/AuthFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/com/example/gateway/model/SecurityProperties.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+    <list default="true" id="9a1ead5d-e6c9-43e0-b808-09b27100863b" name="Changes" comment="add(gateway/app/log): gateway 权限拦截">
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/resources/bootstrap.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/resources/other.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/system/src/main/resources/application.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/system/src/main/resources/bootstrap.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/system/src/main/resources/datasource.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/system/src/main/resources/mybatis.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/system/src/main/resources/other.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/common/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/example/common/interceptor/LoginInterceptor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/example/gateway/filter/AuthFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/example/gateway/filter/AuthFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/application.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gateway/target/classes/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/target/classes/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/system/src/main/java/com/example/system/config/InterceptorConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/system/src/main/java/com/example/system/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/system/src/main/java/com/example/system/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/src/main/java/com/example/log/controller/LogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/log/src/main/java/com/example/log/controller/LogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/src/main/resources/application.properties" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,13 +74,13 @@
     "Spring Boot.FrameApplication.executor": "Run",
     "Spring Boot.GatewayApplication.executor": "Run",
     "Spring Boot.LogApplication.executor": "Run",
-    "Spring Boot.SystemApplication.executor": "Debug",
+    "Spring Boot.SystemApplication.executor": "Run",
     "com.dong.plugin.component.SettingConsoleTools$DonateAnAction": "true",
     "com.dong.plugin.gui.FormatDialog": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/Projects/GeneralLoginModule/backend/log/src/main",
+    "last_opened_file_path": "D:/Projects/GeneralLoginModule/backend/system/src/main/resources",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -101,13 +104,14 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Projects\GeneralLoginModule\backend\system\src\main\resources" />
       <recent name="D:\Projects\GeneralLoginModule\backend\log\src\main" />
       <recent name="D:\Projects\GeneralLoginModule\backend\gateway\src\main" />
       <recent name="D:\Projects\GeneralLoginModule\backend\app\src\main" />
       <recent name="D:\Projects\GeneralLoginModule\backend\dcloud-account\src\main\java\com\example\dcloud_account\service\impl" />
-      <recent name="D:\Projects\GeneralLoginModule\backend\dcloud-account\src\main\java\com\example\dcloud_account\service" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Projects\GeneralLoginModule\backend\gateway\src\main\resources" />
       <recent name="D:\Projects\GeneralLoginModule\backend\frame\src\main\java\com\example\frame" />
       <recent name="D:\Projects\GeneralLoginModule\backend\frame\src\main\java\com\example" />
     </key>
@@ -233,7 +237,8 @@
       <workItem from="1747192094377" duration="885000" />
       <workItem from="1747227514440" duration="1044000" />
       <workItem from="1747267600560" duration="312000" />
-      <workItem from="1747309256479" duration="4382000" />
+      <workItem from="1747309256479" duration="4407000" />
+      <workItem from="1747398594016" duration="6700000" />
     </task>
     <task id="LOCAL-00001" summary="新增：新增注册模块（待完善）">
       <option name="closed" value="true" />
@@ -315,7 +320,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747228432675</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="add(gateway/app/log): gateway 权限拦截">
+      <option name="closed" value="true" />
+      <created>1747313663625</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1747313663625</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -343,16 +356,12 @@
     <MESSAGE value="New(system): optimize login logic." />
     <MESSAGE value="feat(gateway/app/log): add new modules and config" />
     <MESSAGE value="fix(gateway/app/log): 修复gateway无法跳转服务的问题&#10;&#10;由于springcloud2020弃用了Ribbon，因此Alibaba在2021版本nacos中删除了Ribbon的jar包，因此无法通过lb路由到指定微服务，出现了503情况。&#10;所以只需要引入springcloud loadbalancer包即可。" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix(gateway/app/log): 修复gateway无法跳转服务的问题&#10;&#10;由于springcloud2020弃用了Ribbon，因此Alibaba在2021版本nacos中删除了Ribbon的jar包，因此无法通过lb路由到指定微服务，出现了503情况。&#10;所以只需要引入springcloud loadbalancer包即可。" />
+    <MESSAGE value="add(gateway/app/log): gateway 权限拦截" />
+    <option name="LAST_COMMIT_MESSAGE" value="add(gateway/app/log): gateway 权限拦截" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/app/controller/AppController.java</url>
-          <line>19</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/system/src/main/java/com/example/system/manager/Impl/SysUserManagerImpl.java</url>
           <line>36</line>

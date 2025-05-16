@@ -70,9 +70,6 @@ public class AuthFilter implements GlobalFilter, Ordered {
         return chain.filter(exchange.mutate().request(mutate.build()).build());
     }
 
-
-
-
     @Override
     public int getOrder() {
         return 0;

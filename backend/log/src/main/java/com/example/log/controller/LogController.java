@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class LogController {
 
     @GetMapping("test")
-    public String helloLog( ) {
+    public String helloLog() {
         return "Hello App";
     }
 

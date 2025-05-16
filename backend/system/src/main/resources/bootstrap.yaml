@@ -1,0 +1,34 @@
+server:
+  port: 9001
+spring:
+  application:
+    name: system-server
+  cloud:
+    nacos:
+      # Register Center.
+      discovery:
+        enabled: true
+        server-addr: 123.249.98.26:8848
+        username: nacos
+        password: nacos
+        namespace: dev
+      # Configuration Center.
+      config:
+        server-addr: 123.249.98.26:8848
+        username: nacos
+        password: nacos
+        namespace: dev
+        group: general-system
+        # 默认选择application.yaml
+        file-extension: yaml
+        # 其他配置文件
+        extension-configs:
+          - data-id: datasource.yaml
+            group: general-system
+            refresh: true
+          - data-id: mybatis.yaml
+            group: general-system
+            refresh: true
+          - data-id: other.yaml
+            group: general-system
+            refresh: true

@@ -1,0 +1,28 @@
+server:
+  port: 8000
+
+spring:
+  application:
+    name: gateway-server
+  cloud:
+    nacos:
+      # Register Center.
+      discovery:
+        enabled: true
+        server-addr: 123.249.98.26:8848
+        username: nacos
+        password: nacos
+        namespace: dev
+      # Configuration Center.
+      config:
+        server-addr: 123.249.98.26:8848
+        username: nacos
+        password: nacos
+        namespace: dev
+        group: general-gateway
+        file-extension: yaml
+        refresh-enabled: true
+        extension-configs:
+          - data-id: other.yaml
+            group: general-gateway
+            refresh: true

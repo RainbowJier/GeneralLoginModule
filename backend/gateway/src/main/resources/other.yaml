@@ -30,3 +30,15 @@ spring:
             - Path=/general/log/**
           filters:
             - StripPrefix=1
+
+security:
+  ignored-urls:
+    - /general/system/register
+    - /general/system/login
+    - /general/system/captcha
+    - /general/system/sendCode
+    - /general/system/resetPwd
+  intercepted-urls:
+    - /general/**
+
+Authorization: eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY4MDU2NjUwOSwiaWF0IjoxNjgwNTYyNTA5LCJyb2xlcyI6WyJST0xFX0FETUlOIiwiUk

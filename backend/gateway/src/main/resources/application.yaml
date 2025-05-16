@@ -1,26 +1,11 @@
-server:
-  port: 8000
-
 spring:
-  application:
-    name: gateway-server
   cloud:
-    # Nacos configuration.
-    nacos:
-      discovery:
-        enabled: true
-        server-addr: 123.249.98.26:8848
-        username: nacos
-        password: nacos
-        namespace: dev
-    # Nacos registration center.
-
-    # Route Rule.
     gateway:
       # Enable the discovery client.
       discovery:
         locator:
           enabled: true
+      # Route Rule.
       routes:
         - id: system-server
           # lb: this means the request should be forwarded to the service named system-server using loadbalancer.
@@ -45,18 +30,3 @@ spring:
             - Path=/general/log/**
           filters:
             - StripPrefix=1
-
-##################
-# Login Verification.
-##################
-security:
-  ignored-urls:
-    - /general/system/register
-    - /general/system/login
-    - /general/system/captcha
-    - /general/system/sendCode
-    - /general/system/resetPwd
-  intercepted-urls:
-    - /general/**
-
-Authorization: eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY4MDU2NjUwOSwiaWF0IjoxNjgwNTYyNTA5LCJyb2xlcyI6WyJST0xFX0FETUlOIiwiUk

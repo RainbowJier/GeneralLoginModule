@@ -1,0 +1,19 @@
+spring:
+  # mysql
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url:jdbc: mysql://123.249.98.26:3306/general_db?useUnicode
+    username: root
+    password: xdclass.net
+    type: com.alibaba.druid.pool.DruidDataSource
+  # redis
+  redis:
+    host: 123.249.98.26
+    password: xdclass.net
+    port: 6379
+    jedis:
+      pool:
+        max-active: 100
+        max-idle: 100
+        min-idle: 100
+        max-wait: 60000
