@@ -11,9 +11,11 @@
         <module name="app" />
         <module name="system" />
         <module name="common" />
-        <module name="log" />
         <module name="gateway" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="log" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>
