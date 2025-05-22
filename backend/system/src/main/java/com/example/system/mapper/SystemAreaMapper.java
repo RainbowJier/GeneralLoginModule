@@ -2,7 +2,6 @@ package com.example.system.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.common.model.entity.system.SystemArea;
-import .SystemArea;
 
 /**
  * 行政区域表(SystemArea)表数据库访问层

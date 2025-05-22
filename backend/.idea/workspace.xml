@@ -4,32 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a1ead5d-e6c9-43e0-b808-09b27100863b" name="Changes" comment="重构代码">
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/com/example/common/model/entity/system/SystemArea.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/system/src/main/java/com/example/system/controller/SystemAreaController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/system/src/main/java/com/example/system/manager/Impl/SystemAreaManagerImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/system/src/main/java/com/example/system/manager/SystemAreaManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/system/src/main/java/com/example/system/mapper/SystemAreaMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/system/src/main/java/com/example/system/service/SystemAreaService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/system/src/main/java/com/example/system/service/impl/SystemAreaServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/281f116c-c9e8-445b-b847-bcca1d79e8cd.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/281f116c-c9e8-445b-b847-bcca1d79e8cd.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/easyCodeTableSettingEncode.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/easyCodeTableSettingEncode.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/system/src/main/java/com/example/system/component/EmailComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/example/common/component/EmailComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/system/src/main/java/com/example/system/component/SmsComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/example/common/component/SmsComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/system/src/main/java/com/example/system/config/SmsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/example/common/config/SmsConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/system/src/main/java/com/example/system/manager/Impl/SysUserManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/system/src/main/java/com/example/system/manager/Impl/SysUserManagerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/system/src/main/java/com/example/system/manager/SysUserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/system/src/main/java/com/example/system/manager/SysUserManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/system/src/main/java/com/example/system/mapper/SysUserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/system/src/main/java/com/example/system/mapper/SysUserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/system/src/main/java/com/example/system/model/dto/SysUserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/example/common/model/dto/SystemUserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/system/src/main/java/com/example/system/model/entity/SysUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/example/common/model/entity/system/SystemUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/system/src/main/java/com/example/system/service/SysUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/system/src/main/java/com/example/system/service/SysUserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/system/src/main/java/com/example/system/service/impl/NotifyServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/system/src/main/java/com/example/system/service/impl/NotifyServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/system/src/main/java/com/example/system/service/impl/SysUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/system/src/main/java/com/example/system/service/impl/SysUserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/system/src/main/resources/bootstrap.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/system/src/main/resources/bootstrap.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/system/src/test/java/com/example/system/AccountApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/system/src/test/java/com/example/system/AccountApplicationTests.java" afterDir="false" />
-    </list>
+    <list default="true" id="9a1ead5d-e6c9-43e0-b808-09b27100863b" name="Changes" comment="重构代码" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -257,7 +232,7 @@
       <workItem from="1747905323320" duration="141000" />
       <workItem from="1747905837127" duration="144000" />
       <workItem from="1747906132192" duration="17000" />
-      <workItem from="1747907026585" duration="762000" />
+      <workItem from="1747907026585" duration="804000" />
     </task>
     <task id="LOCAL-00001" summary="新增：新增注册模块（待完善）">
       <option name="closed" value="true" />
@@ -363,7 +338,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747481449579</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="重构代码">
+      <option name="closed" value="true" />
+      <created>1747907805394</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1747907805394</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
