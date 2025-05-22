@@ -1,7 +1,7 @@
-package com.example.system.component;
+package com.example.common.component;
 
+import com.example.common.config.SmsConfig;
 import com.example.common.util.CommonUtil;
-import com.example.system.config.SmsConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.*;
 import org.springframework.scheduling.annotation.Async;

@@ -2,9 +2,9 @@ package com.example.system.manager.Impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
+import com.example.common.model.entity.system.SystemUser;
 import com.example.system.manager.SysUserManager;
 import com.example.system.mapper.SysUserMapper;
-import com.example.system.model.entity.SysUser;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -19,32 +19,32 @@ public class SysUserManagerImpl implements SysUserManager {
 
 
     @Override
-    public int insert(SysUser sysUser) {
-        return sysUserMapper.insert(sysUser);
+    public int insert(SystemUser systemUser) {
+        return sysUserMapper.insert(systemUser);
     }
 
     @Override
-    public SysUser selectOne(String email) {
-        LambdaQueryWrapper<SysUser> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.eq(SysUser::getEmail, email)
-                .eq(SysUser::getStatus, 1);
+    public SystemUser selectOne(String email) {
+        LambdaQueryWrapper<SystemUser> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(SystemUser::getEmail, email)
+                .eq(SystemUser::getStatus, 1);
 
         return sysUserMapper.selectOne(queryWrapper);
     }
 
     @Override
-    public List<SysUser> selectAllUsers() {
-        List<SysUser> sysUsers = sysUserMapper.selectList(null);
-        return sysUsers;
+    public List<SystemUser> selectAllUsers() {
+        List<SystemUser> systemUsers = sysUserMapper.selectList(null);
+        return systemUsers;
     }
 
 
     @Override
-    public int update(SysUser sysUser) {
-        LambdaUpdateWrapper<SysUser> updateWrapper = new LambdaUpdateWrapper();
-        updateWrapper.eq(SysUser::getId, sysUser.getId())
-                .eq(SysUser::getStatus, 1);
+    public int update(SystemUser systemUser) {
+        LambdaUpdateWrapper<SystemUser> updateWrapper = new LambdaUpdateWrapper();
+        updateWrapper.eq(SystemUser::getId, systemUser.getId())
+                .eq(SystemUser::getStatus, 1);
 
-        return sysUserMapper.update(sysUser,null);
+        return sysUserMapper.update(systemUser,null);
     }
 }

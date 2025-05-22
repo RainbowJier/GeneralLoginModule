@@ -1,4 +1,4 @@
-package com.example.system.config;
+package com.example.common.config;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

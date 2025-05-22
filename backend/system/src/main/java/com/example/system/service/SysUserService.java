@@ -7,7 +7,7 @@ import com.example.system.controller.request.ResetPwdRequest;
 
 
 /**
- * (SysUser)表服务接口
+ * (SystemUser)表服务接口
  *
  * @author makejava
  * @since 2025-04-17 16:39:02

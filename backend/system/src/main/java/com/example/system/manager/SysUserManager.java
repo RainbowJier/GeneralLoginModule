@@ -1,16 +1,16 @@
 package com.example.system.manager;
 
-import com.example.system.model.entity.SysUser;
+import com.example.common.model.entity.system.SystemUser;
 
 import java.util.List;
 
 
 public interface SysUserManager {
-    int insert(SysUser sysUser);
+    int insert(SystemUser systemUser);
 
-    SysUser selectOne(String email);
+    SystemUser selectOne(String email);
 
-    List<SysUser> selectAllUsers();
+    List<SystemUser> selectAllUsers();
 
-    int update(SysUser sysUser);
+    int update(SystemUser systemUser);
 }

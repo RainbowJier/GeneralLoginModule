@@ -1,7 +1,7 @@
 package com.example.system;
 
-import com.example.system.component.SmsComponent;
-import com.example.system.config.SmsConfig;
+import com.example.common.component.SmsComponent;
+import com.example.common.config.SmsConfig;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

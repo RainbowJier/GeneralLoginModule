@@ -1,4 +1,4 @@
-package com.example.system.component;
+package com.example.common.component;
 
 import com.example.common.enums.BizCode;
 import com.example.common.exception.BizException;

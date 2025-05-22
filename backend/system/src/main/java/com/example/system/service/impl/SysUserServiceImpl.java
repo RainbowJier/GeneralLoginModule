@@ -4,6 +4,7 @@ package com.example.system.service.impl;
 import cn.dev33.satoken.stp.SaTokenInfo;
 import cn.dev33.satoken.stp.StpUtil;
 import com.example.common.constant.RedisKey;
+import com.example.common.model.entity.system.SystemUser;
 import com.example.common.model.entity.LoginUser;
 import com.example.common.enums.BizCode;
 import com.example.common.enums.SendCode;
@@ -14,8 +15,7 @@ import com.example.system.controller.request.LoginRequest;
 import com.example.system.controller.request.RegisterRequest;
 import com.example.system.controller.request.ResetPwdRequest;
 import com.example.system.manager.SysUserManager;
-import com.example.system.model.dto.SysUserDTO;
-import com.example.system.model.entity.SysUser;
+import com.example.common.model.dto.SystemUserDTO;
 import com.example.system.service.NotifyService;
 import com.example.system.service.SysUserService;
 import lombok.extern.slf4j.Slf4j;
@@ -59,21 +59,21 @@ public class SysUserServiceImpl implements SysUserService {
             return JsonData.buildError(BizCode.CODE_ERROR);
         }
 
-        SysUser sysUser = new SysUser();
-        BeanUtils.copyProperties(registerRequest, sysUser);
+        SystemUser systemUser = new SystemUser();
+        BeanUtils.copyProperties(registerRequest, systemUser);
 
-        sysUser.setAccount(CommonUtil.generateUUID())
+        systemUser.setAccount(CommonUtil.generateUUID())
                 .setEmail(email)
                 .setUsername(registerRequest.getUsername());
 
         // Encrypt.
         String salt = "$1$" + CommonUtil.getStringNumRandom(8);
-        sysUser.setSalt(salt);
+        systemUser.setSalt(salt);
         String encryptedPassword = Md5Crypt.md5Crypt(registerRequest.getPassword().getBytes(), salt);
-        sysUser.setPassword(encryptedPassword);
+        systemUser.setPassword(encryptedPassword);
 
         try {
-            int insertRow = sysUserManager.insert(sysUser);
+            int insertRow = sysUserManager.insert(systemUser);
             if (insertRow < 1) {
                 return JsonData.buildError(BizCode.EMAIL_REPEAT);
             }
@@ -87,22 +87,22 @@ public class SysUserServiceImpl implements SysUserService {
     @Override
     public JsonData login(LoginRequest loginRequest) {
         // Check user exist
-        SysUser sysUser = sysUserManager.selectOne(loginRequest.getEmail());
+        SystemUser systemUser = sysUserManager.selectOne(loginRequest.getEmail());
 
-        if (sysUser == null) {
+        if (systemUser == null) {
             return JsonData.buildError(BizCode.ACCOUNT_UNREGISTER);
         }
 
         // Match password.
-        String secret = sysUser.getSalt();
+        String secret = systemUser.getSalt();
         String loginPwd = loginRequest.getPassword();
         String encryptedPwd = Md5Crypt.md5Crypt(loginPwd.getBytes(), secret);
-        if (!encryptedPwd.equals(sysUser.getPassword())) {
+        if (!encryptedPwd.equals(systemUser.getPassword())) {
             return JsonData.buildError(BizCode.ACCOUNT_PWD_ERROR);
         }
 
         // Login success.
-        Long userId = sysUser.getId();
+        Long userId = systemUser.getId();
 
         boolean rememberMe = loginRequest.getRememberMe();
         if(rememberMe){
@@ -116,7 +116,7 @@ public class SysUserServiceImpl implements SysUserService {
 
         // Return the current user info.
         LoginUser loginUser = new LoginUser();
-        BeanUtils.copyProperties(sysUser, loginUser);
+        BeanUtils.copyProperties(systemUser, loginUser);
 
         HashMap<String, Object> resultMap = new HashMap<>();
         resultMap.put("tokenInfo", tokenInfo);
@@ -129,8 +129,8 @@ public class SysUserServiceImpl implements SysUserService {
     public JsonData reset(ResetPwdRequest resetUserRequest) {
         try {
             // Check email exits or not.
-            SysUser sysUser = sysUserManager.selectOne(resetUserRequest.getEmail());
-            if (sysUser == null) {
+            SystemUser systemUser = sysUserManager.selectOne(resetUserRequest.getEmail());
+            if (systemUser == null) {
                 return JsonData.buildError(BizCode.ACCOUNT_UNREGISTER);
             }
 
@@ -143,16 +143,16 @@ public class SysUserServiceImpl implements SysUserService {
             }
 
             // Check the reset times are more than 5 times in 24 hours or not.
-            if (isOverLimit(sysUser.getEmail())) {
+            if (isOverLimit(systemUser.getEmail())) {
                 return JsonData.buildError(BizCode.RESET_PASSWORD_LIMIT);
             }
 
             // Update password.
-            String salt = sysUser.getSalt();
+            String salt = systemUser.getSalt();
             String encryptedPassword = Md5Crypt.md5Crypt(resetUserRequest.getPassword().getBytes(), salt);
-            sysUser.setPassword(encryptedPassword);
+            systemUser.setPassword(encryptedPassword);
 
-            int row = sysUserManager.update(sysUser);
+            int row = sysUserManager.update(systemUser);
             if (row < 1) {
                 return JsonData.buildError(BizCode.RESET_PASSWORD_FAIL);
             }
@@ -182,14 +182,14 @@ public class SysUserServiceImpl implements SysUserService {
 
     @Override
     public JsonData selectAllUsers() {
-        List<SysUser> sysUsers = sysUserManager.selectAllUsers();
+        List<SystemUser> systemUsers = sysUserManager.selectAllUsers();
 
-        List<SysUserDTO> list = new ArrayList<>();
+        List<SystemUserDTO> list = new ArrayList<>();
 
-        for (SysUser sysUser : sysUsers) {
-            SysUserDTO sysUserDTO = new SysUserDTO();
-            BeanUtils.copyProperties(sysUser, sysUserDTO);
-            list.add(sysUserDTO);
+        for (SystemUser systemUser : systemUsers) {
+            SystemUserDTO systemUserDTO = new SystemUserDTO();
+            BeanUtils.copyProperties(systemUser, systemUserDTO);
+            list.add(systemUserDTO);
         }
 
         return JsonData.buildSuccess(list);

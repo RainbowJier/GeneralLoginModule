@@ -4,20 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a1ead5d-e6c9-43e0-b808-09b27100863b" name="Changes" comment="add(gateway/app/log): nacos configuration refreshes dynamically.">
-      <change afterPath="$PROJECT_DIR$/app/src/main/resources/application.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/resources/bootstrap.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="9a1ead5d-e6c9-43e0-b808-09b27100863b" name="Changes" comment="重构代码">
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/com/example/common/model/entity/system/SystemArea.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/system/src/main/java/com/example/system/controller/SystemAreaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/system/src/main/java/com/example/system/manager/Impl/SystemAreaManagerImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/system/src/main/java/com/example/system/manager/SystemAreaManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/system/src/main/java/com/example/system/mapper/SystemAreaMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/system/src/main/java/com/example/system/service/SystemAreaService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/system/src/main/java/com/example/system/service/impl/SystemAreaServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/281f116c-c9e8-445b-b847-bcca1d79e8cd.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/281f116c-c9e8-445b-b847-bcca1d79e8cd.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/easyCodeTableSettingEncode.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/easyCodeTableSettingEncode.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/src/main/java/com/example/log/LogApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/src/main/java/com/example/log/controller/LogController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/src/test/java/com/example/log/LogApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/target/classes/com/example/log/LogApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/src/main/java/com/example/system/component/EmailComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/example/common/component/EmailComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/src/main/java/com/example/system/component/SmsComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/example/common/component/SmsComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/src/main/java/com/example/system/config/SmsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/example/common/config/SmsConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/src/main/java/com/example/system/manager/Impl/SysUserManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/system/src/main/java/com/example/system/manager/Impl/SysUserManagerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/src/main/java/com/example/system/manager/SysUserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/system/src/main/java/com/example/system/manager/SysUserManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/src/main/java/com/example/system/mapper/SysUserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/system/src/main/java/com/example/system/mapper/SysUserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/src/main/java/com/example/system/model/dto/SysUserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/example/common/model/dto/SystemUserDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/src/main/java/com/example/system/model/entity/SysUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/example/common/model/entity/system/SystemUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/src/main/java/com/example/system/service/SysUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/system/src/main/java/com/example/system/service/SysUserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/src/main/java/com/example/system/service/impl/NotifyServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/system/src/main/java/com/example/system/service/impl/NotifyServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/src/main/java/com/example/system/service/impl/SysUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/system/src/main/java/com/example/system/service/impl/SysUserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/src/main/resources/bootstrap.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/system/src/main/resources/bootstrap.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/src/test/java/com/example/system/AccountApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/system/src/test/java/com/example/system/AccountApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +90,7 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/Projects/GeneralLoginModule/backend/app/src/main/resources",
+    "last_opened_file_path": "D:/Projects/GeneralLoginModule/backend/system/src/main/java/com/example/system",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -115,11 +126,11 @@
       <recent name="D:\Projects\GeneralLoginModule\backend\frame\src\main\java\com\example" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.system.manager.Impl" />
+      <recent name="com.example.system.manager" />
       <recent name="com.example.log.controller" />
       <recent name="com.example.app.controller" />
       <recent name="com.example.system.model.dto" />
-      <recent name="com.example.system.component" />
-      <recent name="com.example.system.config" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.AppApplication">
@@ -239,6 +250,14 @@
       <workItem from="1747309256479" duration="4407000" />
       <workItem from="1747398594016" duration="6896000" />
       <workItem from="1747456976347" duration="456000" />
+      <workItem from="1747481377065" duration="240000" />
+      <workItem from="1747485331633" duration="67000" />
+      <workItem from="1747485412925" duration="52000" />
+      <workItem from="1747558623002" duration="3000" />
+      <workItem from="1747905323320" duration="141000" />
+      <workItem from="1747905837127" duration="144000" />
+      <workItem from="1747906132192" duration="17000" />
+      <workItem from="1747907026585" duration="762000" />
     </task>
     <task id="LOCAL-00001" summary="新增：新增注册模块（待完善）">
       <option name="closed" value="true" />
@@ -336,7 +355,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747405493443</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="重构代码">
+      <option name="closed" value="true" />
+      <created>1747481449579</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1747481449579</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -366,7 +393,8 @@
     <MESSAGE value="fix(gateway/app/log): 修复gateway无法跳转服务的问题&#10;&#10;由于springcloud2020弃用了Ribbon，因此Alibaba在2021版本nacos中删除了Ribbon的jar包，因此无法通过lb路由到指定微服务，出现了503情况。&#10;所以只需要引入springcloud loadbalancer包即可。" />
     <MESSAGE value="add(gateway/app/log): gateway 权限拦截" />
     <MESSAGE value="add(gateway/app/log): nacos configuration refreshes dynamically." />
-    <option name="LAST_COMMIT_MESSAGE" value="add(gateway/app/log): nacos configuration refreshes dynamically." />
+    <MESSAGE value="重构代码" />
+    <option name="LAST_COMMIT_MESSAGE" value="重构代码" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
