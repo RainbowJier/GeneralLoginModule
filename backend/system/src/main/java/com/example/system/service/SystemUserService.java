@@ -12,7 +12,7 @@ import com.example.system.controller.request.ResetPwdRequest;
  * @author makejava
  * @since 2025-04-17 16:39:02
  */
-public interface SysUserService {
+public interface SystemUserService {
     JsonData register(RegisterRequest registerRequest);
 
     JsonData login(LoginRequest loginRequest);

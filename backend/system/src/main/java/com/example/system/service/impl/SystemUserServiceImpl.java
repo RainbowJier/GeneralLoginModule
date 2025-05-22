@@ -14,10 +14,10 @@ import com.example.common.util.JsonData;
 import com.example.system.controller.request.LoginRequest;
 import com.example.system.controller.request.RegisterRequest;
 import com.example.system.controller.request.ResetPwdRequest;
-import com.example.system.manager.SysUserManager;
+import com.example.system.manager.SystemUserManager;
 import com.example.common.model.dto.SystemUserDTO;
 import com.example.system.service.NotifyService;
-import com.example.system.service.SysUserService;
+import com.example.system.service.SystemUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.digest.Md5Crypt;
 import org.springframework.beans.BeanUtils;
@@ -34,9 +34,9 @@ import java.util.concurrent.TimeUnit;
 
 @Slf4j
 @Service
-public class SysUserServiceImpl implements SysUserService {
+public class SystemUserServiceImpl implements SystemUserService {
     @Resource
-    private SysUserManager sysUserManager;
+    private SystemUserManager systemUserManager;
 
     @Resource
     private NotifyService notifyService;
@@ -73,7 +73,7 @@ public class SysUserServiceImpl implements SysUserService {
         systemUser.setPassword(encryptedPassword);
 
         try {
-            int insertRow = sysUserManager.insert(systemUser);
+            int insertRow = systemUserManager.insert(systemUser);
             if (insertRow < 1) {
                 return JsonData.buildError(BizCode.EMAIL_REPEAT);
             }
@@ -87,7 +87,7 @@ public class SysUserServiceImpl implements SysUserService {
     @Override
     public JsonData login(LoginRequest loginRequest) {
         // Check user exist
-        SystemUser systemUser = sysUserManager.selectOne(loginRequest.getEmail());
+        SystemUser systemUser = systemUserManager.selectOne(loginRequest.getEmail());
 
         if (systemUser == null) {
             return JsonData.buildError(BizCode.ACCOUNT_UNREGISTER);
@@ -129,7 +129,7 @@ public class SysUserServiceImpl implements SysUserService {
     public JsonData reset(ResetPwdRequest resetUserRequest) {
         try {
             // Check email exits or not.
-            SystemUser systemUser = sysUserManager.selectOne(resetUserRequest.getEmail());
+            SystemUser systemUser = systemUserManager.selectOne(resetUserRequest.getEmail());
             if (systemUser == null) {
                 return JsonData.buildError(BizCode.ACCOUNT_UNREGISTER);
             }
@@ -152,7 +152,7 @@ public class SysUserServiceImpl implements SysUserService {
             String encryptedPassword = Md5Crypt.md5Crypt(resetUserRequest.getPassword().getBytes(), salt);
             systemUser.setPassword(encryptedPassword);
 
-            int row = sysUserManager.update(systemUser);
+            int row = systemUserManager.update(systemUser);
             if (row < 1) {
                 return JsonData.buildError(BizCode.RESET_PASSWORD_FAIL);
             }
@@ -182,7 +182,7 @@ public class SysUserServiceImpl implements SysUserService {
 
     @Override
     public JsonData selectAllUsers() {
-        List<SystemUser> systemUsers = sysUserManager.selectAllUsers();
+        List<SystemUser> systemUsers = systemUserManager.selectAllUsers();
 
         List<SystemUserDTO> list = new ArrayList<>();
 

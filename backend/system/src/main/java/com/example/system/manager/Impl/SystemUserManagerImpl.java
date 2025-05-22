@@ -3,8 +3,8 @@ package com.example.system.manager.Impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.example.common.model.entity.system.SystemUser;
-import com.example.system.manager.SysUserManager;
-import com.example.system.mapper.SysUserMapper;
+import com.example.system.manager.SystemUserManager;
+import com.example.system.mapper.SystemUserMapper;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -12,15 +12,15 @@ import java.util.List;
 
 
 @Component
-public class SysUserManagerImpl implements SysUserManager {
+public class SystemUserManagerImpl implements SystemUserManager {
 
     @Resource
-    private SysUserMapper sysUserMapper;
+    private SystemUserMapper systemUserMapper;
 
 
     @Override
     public int insert(SystemUser systemUser) {
-        return sysUserMapper.insert(systemUser);
+        return systemUserMapper.insert(systemUser);
     }
 
     @Override
@@ -29,12 +29,12 @@ public class SysUserManagerImpl implements SysUserManager {
         queryWrapper.eq(SystemUser::getEmail, email)
                 .eq(SystemUser::getStatus, 1);
 
-        return sysUserMapper.selectOne(queryWrapper);
+        return systemUserMapper.selectOne(queryWrapper);
     }
 
     @Override
     public List<SystemUser> selectAllUsers() {
-        List<SystemUser> systemUsers = sysUserMapper.selectList(null);
+        List<SystemUser> systemUsers = systemUserMapper.selectList(null);
         return systemUsers;
     }
 
@@ -45,6 +45,6 @@ public class SysUserManagerImpl implements SysUserManager {
         updateWrapper.eq(SystemUser::getId, systemUser.getId())
                 .eq(SystemUser::getStatus, 1);
 
-        return sysUserMapper.update(systemUser,null);
+        return systemUserMapper.update(systemUser,null);
     }
 }

@@ -7,7 +7,7 @@ import com.example.system.aop.annotation.SysLogAnno;
 import com.example.system.controller.request.LoginRequest;
 import com.example.system.controller.request.RegisterRequest;
 import com.example.system.controller.request.ResetPwdRequest;
-import com.example.system.service.SysUserService;
+import com.example.system.service.SystemUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,7 +26,7 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/system")
 public class LoginController {
     @Resource
-    private SysUserService sysUserService;
+    private SystemUserService systemUserService;
 
     @Resource
     HttpServletRequest request;
@@ -37,7 +37,7 @@ public class LoginController {
     @SysLogAnno(description = "Register", operateType = OperationType.ADD)
     @PostMapping("register")
     public JsonData register(RegisterRequest registerRequest) {
-        return sysUserService.register(registerRequest);
+        return systemUserService.register(registerRequest);
     }
 
     /**
@@ -46,7 +46,7 @@ public class LoginController {
     @SysLogAnno(description = "Login", operateType = OperationType.QUERY)
     @PostMapping("login")
     public JsonData login(LoginRequest loginRequest) {
-        return sysUserService.login(loginRequest);
+        return systemUserService.login(loginRequest);
     }
 
     /**
@@ -67,7 +67,7 @@ public class LoginController {
     @SysLogAnno(description = "Reset UserInfo", operateType = OperationType.UPDATE)
     @PostMapping("resetPwd")
     public JsonData resetPwd(ResetPwdRequest resetPwdRequest) {
-        return sysUserService.reset(resetPwdRequest);
+        return systemUserService.reset(resetPwdRequest);
     }
 
     /**
@@ -75,7 +75,7 @@ public class LoginController {
      */
     @GetMapping("selectAllUsers")
     public JsonData selectAllUsers() {
-        return sysUserService.selectAllUsers();
+        return systemUserService.selectAllUsers();
     }
 
 
