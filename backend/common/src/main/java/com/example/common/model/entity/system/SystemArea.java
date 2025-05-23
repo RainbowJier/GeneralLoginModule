@@ -1,7 +1,9 @@
 package com.example.common.model.entity.system;
 
+import java.util.ArrayList;
 import java.util.Date;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,6 +11,7 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * 行政区域表(SystemArea)表实体类
@@ -51,10 +54,12 @@ public class SystemArea implements Serializable {
      * 更新时间
      */
     private Date updateTime;
+
     /**
      * 精度
      */
     private Double lng;
+
     /**
      * 纬度
      */

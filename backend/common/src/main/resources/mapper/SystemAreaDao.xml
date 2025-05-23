@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace=".dao.SystemAreaDao">
+
+    <resultMap type=".entity.SystemArea" id="SystemAreaMap">
+        <result property="id" column="ID" jdbcType="VARCHAR"/>
+        <result property="name" column="NAME" jdbcType="VARCHAR"/>
+        <result property="pid" column="PID" jdbcType="VARCHAR"/>
+        <result property="isValid" column="IS_VALID" jdbcType="INTEGER"/>
+        <result property="grade" column="GRADE" jdbcType="INTEGER"/>
+        <result property="createTime" column="CREATE_TIME" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="UPDATE_TIME" jdbcType="TIMESTAMP"/>
+        <result property="lng" column="LNG" jdbcType="NUMERIC"/>
+        <result property="lat" column="LAT" jdbcType="NUMERIC"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="SystemAreaMap">
+        select
+ID, NAME, PID, IS_VALID, GRADE, CREATE_TIME, UPDATE_TIME, LNG, LAT
+        from SYSTEM_AREA
+        where ID = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="SystemAreaMap">
+        select
+ID, NAME, PID, IS_VALID, GRADE, CREATE_TIME, UPDATE_TIME, LNG, LAT
+        from SYSTEM_AREA
+        <where>
+            <if test="id != null and id != ''">
+                and ID = #{id}
+            </if>
+            <if test="name != null and name != ''">
+                and NAME = #{name}
+            </if>
+            <if test="pid != null and pid != ''">
+                and PID = #{pid}
+            </if>
+            <if test="isValid != null">
+                and IS_VALID = #{isValid}
+            </if>
+            <if test="grade != null">
+                and GRADE = #{grade}
+            </if>
+            <if test="createTime != null">
+                and CREATE_TIME = #{createTime}
+            </if>
+            <if test="updateTime != null">
+                and UPDATE_TIME = #{updateTime}
+            </if>
+            <if test="lng != null">
+                and LNG = #{lng}
+            </if>
+            <if test="lat != null">
+                and LAT = #{lat}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from SYSTEM_AREA
+        <where>
+            <if test="id != null and id != ''">
+                and ID = #{id}
+            </if>
+            <if test="name != null and name != ''">
+                and NAME = #{name}
+            </if>
+            <if test="pid != null and pid != ''">
+                and PID = #{pid}
+            </if>
+            <if test="isValid != null">
+                and IS_VALID = #{isValid}
+            </if>
+            <if test="grade != null">
+                and GRADE = #{grade}
+            </if>
+            <if test="createTime != null">
+                and CREATE_TIME = #{createTime}
+            </if>
+            <if test="updateTime != null">
+                and UPDATE_TIME = #{updateTime}
+            </if>
+            <if test="lng != null">
+                and LNG = #{lng}
+            </if>
+            <if test="lat != null">
+                and LAT = #{lat}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into SYSTEM_AREA(NAME, PID, IS_VALID, GRADE, CREATE_TIME, UPDATE_TIME, LNG, LAT)
+        values (#{name}, #{pid}, #{isValid}, #{grade}, #{createTime}, #{updateTime}, #{lng}, #{lat})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into SYSTEM_AREA(NAME, PID, IS_VALID, GRADE, CREATE_TIME, UPDATE_TIME, LNG, LAT)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.name}, #{entity.pid}, #{entity.isValid}, #{entity.grade}, #{entity.createTime}, #{entity.updateTime}, #{entity.lng}, #{entity.lat})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into SYSTEM_AREA(NAME, PID, IS_VALID, GRADE, CREATE_TIME, UPDATE_TIME, LNG, LAT)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.name}, #{entity.pid}, #{entity.isValid}, #{entity.grade}, #{entity.createTime}, #{entity.updateTime}, #{entity.lng}, #{entity.lat})
+        </foreach>
+        on duplicate key update
+NAME = values(NAME),
+PID = values(PID),
+IS_VALID = values(IS_VALID),
+GRADE = values(GRADE),
+CREATE_TIME = values(CREATE_TIME),
+UPDATE_TIME = values(UPDATE_TIME),
+LNG = values(LNG),
+LAT = values(LAT)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update SYSTEM_AREA
+        <set>
+            <if test="name != null and name != ''">
+                NAME = #{name},
+            </if>
+            <if test="pid != null and pid != ''">
+                PID = #{pid},
+            </if>
+            <if test="isValid != null">
+                IS_VALID = #{isValid},
+            </if>
+            <if test="grade != null">
+                GRADE = #{grade},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime},
+            </if>
+            <if test="updateTime != null">
+                UPDATE_TIME = #{updateTime},
+            </if>
+            <if test="lng != null">
+                LNG = #{lng},
+            </if>
+            <if test="lat != null">
+                LAT = #{lat},
+            </if>
+        </set>
+        where ID = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from SYSTEM_AREA where ID = #{id}
+    </delete>
+
+</mapper>
+

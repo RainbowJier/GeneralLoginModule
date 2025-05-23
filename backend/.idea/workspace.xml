@@ -4,7 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a1ead5d-e6c9-43e0-b808-09b27100863b" name="Changes" comment="重构代码" />
+    <list default="true" id="9a1ead5d-e6c9-43e0-b808-09b27100863b" name="Changes" comment="重构代码">
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/com/example/common/model/entity/system/SystemAreaTree.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/resources/mapper/SystemAreaDao.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/system/src/main/resources/mapper/SystemAreaMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/easyCodeTableSettingEncode.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/easyCodeTableSettingEncode.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/example/common/model/entity/system/SystemArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/example/common/model/entity/system/SystemArea.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/src/main/java/com/example/system/controller/SystemAreaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/system/src/main/java/com/example/system/controller/SystemAreaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/src/main/java/com/example/system/manager/Impl/SystemAreaManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/system/src/main/java/com/example/system/manager/Impl/SystemAreaManagerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/src/main/java/com/example/system/manager/SystemAreaManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/system/src/main/java/com/example/system/manager/SystemAreaManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/src/main/java/com/example/system/mapper/SystemAreaMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/system/src/main/java/com/example/system/mapper/SystemAreaMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/src/main/java/com/example/system/service/SystemAreaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/system/src/main/java/com/example/system/service/SystemAreaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/src/main/java/com/example/system/service/impl/SystemAreaServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/system/src/main/java/com/example/system/service/impl/SystemAreaServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system/src/main/resources/bootstrap.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/system/src/main/resources/bootstrap.yaml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,6 +37,13 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="InvalidFacetManager">
+    <ignored-facets>
+      <facet id="app/invalid/Web" />
+      <facet id="common/invalid/Web" />
+      <facet id="system/invalid/Web" />
+    </ignored-facets>
+  </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -31,6 +53,9 @@
         <option name="userSettingsFile" value="D:\Environment\Maven\apache-maven-3.6.3\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
@@ -65,7 +90,7 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/Projects/GeneralLoginModule/backend/system/src/main/java/com/example/system",
+    "last_opened_file_path": "D:/Projects/GeneralLoginModule/backend/system/src/main/resources/mapper",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -75,12 +100,16 @@
     "project.structure.proportion": "0.15527344",
     "project.structure.side.proportion": "0.2",
     "run.configurations.included.in.services": "true",
-    "settings.editor.selected.configurable": "File.Encoding",
+    "settings.editor.selected.configurable": "com.sjhy.plugin.ui.MainSettingForm",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
     "DatabaseDriversLRU": [
       "mysql"
+    ],
+    "com.intellij.ide.scratch.LRUPopupBuilder$1/SQL 方言": [
+      "MySQL",
+      "Oracle"
     ]
   }
 }]]></component>
@@ -108,7 +137,7 @@
       <recent name="com.example.system.model.dto" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.AppApplication">
+  <component name="RunManager" selected="Spring Boot.SystemApplication">
     <configuration name="AccountApplicationTests.contextLoads" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="system" />
       <extension name="coverage">
@@ -232,7 +261,12 @@
       <workItem from="1747905323320" duration="141000" />
       <workItem from="1747905837127" duration="144000" />
       <workItem from="1747906132192" duration="17000" />
-      <workItem from="1747907026585" duration="804000" />
+      <workItem from="1747907026585" duration="903000" />
+      <workItem from="1747908540321" duration="1385000" />
+      <workItem from="1747958318258" duration="402000" />
+      <workItem from="1747958732064" duration="178000" />
+      <workItem from="1747958919166" duration="1757000" />
+      <workItem from="1748008448143" duration="2685000" />
     </task>
     <task id="LOCAL-00001" summary="新增：新增注册模块（待完善）">
       <option name="closed" value="true" />
@@ -346,7 +380,23 @@
       <option name="project" value="LOCAL" />
       <updated>1747907805394</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="重构代码">
+      <option name="closed" value="true" />
+      <created>1747907863285</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1747907863285</updated>
+    </task>
+    <task id="LOCAL-00016" summary="重构代码">
+      <option name="closed" value="true" />
+      <created>1747907924481</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1747907924481</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -383,7 +433,7 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/system/src/main/java/com/example/system/manager/Impl/SysUserManagerImpl.java</url>
+          <url>file://$PROJECT_DIR$/system/src/main/java/com/example/system/manager/Impl/SystemUserManagerImpl.java</url>
           <line>36</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>

@@ -1,8 +1,8 @@
 server:
   port: 9001
-  max-http-header-size: 102400
+#  max-http-header-size: 102400
   servlet:
-    context-path: /general/system
+    context-path: /system
 spring:
   application:
     name: system-server

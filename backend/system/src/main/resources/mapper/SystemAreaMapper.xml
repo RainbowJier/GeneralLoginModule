@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.system.mapper.SystemAreaMapper">
+
+    <resultMap type="com.example.common.model.entity.system.SystemArea" id="SystemAreaMap">
+        <result property="id" column="ID" jdbcType="VARCHAR"/>
+        <result property="name" column="NAME" jdbcType="VARCHAR"/>
+        <result property="pid" column="PID" jdbcType="VARCHAR"/>
+        <result property="isValid" column="IS_VALID" jdbcType="INTEGER"/>
+        <result property="grade" column="GRADE" jdbcType="INTEGER"/>
+        <result property="createTime" column="CREATE_TIME" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="UPDATE_TIME" jdbcType="TIMESTAMP"/>
+        <result property="lng" column="LNG" jdbcType="NUMERIC"/>
+        <result property="lat" column="LAT" jdbcType="NUMERIC"/>
+    </resultMap>
+
+
+    <select id="getAreaTree" resultMap="SystemAreaMap">
+        WITH RECURSIVE area_tree AS (
+        SELECT * FROM SYSTEM_AREA WHERE PID = '0'
+        UNION ALL
+        SELECT sa.* FROM SYSTEM_AREA sa
+        INNER JOIN area_tree t ON sa.PID = t.ID
+        )
+        SELECT * FROM area_tree
+    </select>
+
+    <select id="getAreaTreeNodeById" resultType="com.example.common.model.entity.system.SystemArea">
+        WITH RECURSIVE area_tree AS (
+        SELECT * FROM SYSTEM_AREA
+        <where>
+            <if test="id != null and id != ''">
+                ID = #{id}
+            </if>
+        </where>
+        UNION ALL
+        SELECT sa.* FROM SYSTEM_AREA sa
+        INNER JOIN area_tree t ON sa.PID = t.ID
+        )
+        SELECT * FROM area_tree
+    </select>
+
+
+</mapper>
+
